@@ -3,12 +3,12 @@
 
 namespace TODO.Contracts
 {
-    public interface ISubTask
+    public interface ISubTask: ITask
     {
-        string Title { get; }
+        
         string Content { get; }
         double ImportancePercent { get; }
         DateTime DueDate { get; }
-        IReminder Reminder { get; }
+       
     }
 }

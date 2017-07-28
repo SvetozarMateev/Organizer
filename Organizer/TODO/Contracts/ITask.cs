@@ -7,10 +7,10 @@ namespace TODO.Contracts
 {
     public interface ITask
     {
-        string Title { get; }//Seriala imeto
+        string Title { get; }
         string Description { get; }
-        DateTime Start { get; }// sega
-        IReminder Reminder { get; }// novi epizodi
+        DateTime Start { get; }
+        IReminder Reminder { get; }
         IUser Author { get; }
         Priority Priority { get; }
         TaskType TaskType { get; }
