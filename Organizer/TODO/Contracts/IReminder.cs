@@ -10,6 +10,8 @@ namespace TODO.Contracts
     {
      
         ICollection<DateTime> MomentsOfBeeping { get; }
-
+        void AddMoment(DateTime moment);
+        void RemoveMoment(DateTime moment);
+        void Remind();
     }
 }

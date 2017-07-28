@@ -7,8 +7,10 @@ namespace TODO.Contracts
 {
     interface ILongTermTask
     {
-        ICollection<SubTask> AllTasks { get; }
+        ICollection<SubTask> AllTasks { get; }//epizodite
+        DateTime End { get; }//posleden epizod
+        void CalculateDefaultPriorityOfAll();
+        void AddSubTask(SubTask subTask);
 
-        DateTime End { get; }
     }
 }

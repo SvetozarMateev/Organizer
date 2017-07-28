@@ -5,7 +5,7 @@ using TODO.Contracts;
 
 namespace TODO.Models
 {
-    public class SubTask
+    public class SubTask:ISubTask
     {
         
     }
