@@ -3,11 +3,15 @@
 using System;
 using System.Collections.Generic;
 using TODO.Contracts;
+using TODO.Utils.GlobalConstants;
+using TODO.Utils.Validator;
 
 namespace TODO.Models
 {
     public class User : IUser
     {
+        private string username;
+
         public ICollection<INotebook> Notebook
         {
             get
@@ -28,7 +32,15 @@ namespace TODO.Models
         {
             get
             {
-                throw new NotImplementedException();
+                return this.username;
+            }
+            private set
+            {
+                Validator.CannotBeNull(value);
+                Validator.CheckNameLength(value, Constants.MinUserLength);
+                Validator.CheckUserName(value);
+
+                this.username = value;
             }
         }
 

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using TODO.Contracts;
 using TODO.Models;
+using TODO.Utils.Validator;
 
 namespace TODO.Models
 {
@@ -23,6 +24,7 @@ namespace TODO.Models
             {
                 throw new NotImplementedException();
             }
+            
         }
 
         public string Description
