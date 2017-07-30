@@ -3,17 +3,27 @@
 using System;
 using TODO.Contracts;
 using TODO.Models;
+using TODO.Utils.GlobalConstants;
+using TODO.Utils.Validator;
 
 namespace TODO
 {
     public class Task : ITask
     {
+        private IUser author;
+
         public IUser Author
         {
             get
             {
-                throw new NotImplementedException();
+                return this.author;
             }
+            private set
+            {
+                // TODO validations
+                this.author = value;
+            }
+
         }
 
         public string Description
