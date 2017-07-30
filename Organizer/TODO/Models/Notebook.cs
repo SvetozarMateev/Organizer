@@ -8,11 +8,28 @@ namespace TODO.Models
 {
     public class Notebook : INotebook
     {
+        private string name;
+        private IUser user;
+        private ICollection<Note> notes;
+        private bool isFavourite;
+
+        public Notebook(string name, IUser user, ICollection<Note> notes, bool isFavourite = false)
+        {
+            this.Name = name;
+            this.User = user;
+            this.Notes = notes;
+            this.IsFavourite = isFavourite;
+        }
+
         public bool IsFavourite
         {
             get
             {
-                throw new NotImplementedException();
+                return this.isFavourite;
+            }
+            set
+            {
+                this.IsFavourite = value;
             }
         }
 
@@ -20,7 +37,11 @@ namespace TODO.Models
         {
             get
             {
-                throw new NotImplementedException();
+                return this.name;
+            }
+            set
+            {
+                this.name = value;
             }
         }
 
@@ -28,7 +49,11 @@ namespace TODO.Models
         {
             get
             {
-                throw new NotImplementedException();
+                return this.notes;
+            }
+            set
+            {
+                this.notes = value;
             }
         }
 
@@ -36,9 +61,14 @@ namespace TODO.Models
         {
             get
             {
-                throw new NotImplementedException();
+                return this.user;
+            }
+            set
+            {
+                this.user = value;
             }
         }
+
 
         public void AddNote(Note note)
         {

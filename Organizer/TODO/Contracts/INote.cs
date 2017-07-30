@@ -9,5 +9,7 @@ namespace TODO.Contracts
         string Content { get; }
         DateTime DateOfCreation { get; }
         bool IsFavourite { get; }
+
+        //void Sort();
     }
 }
