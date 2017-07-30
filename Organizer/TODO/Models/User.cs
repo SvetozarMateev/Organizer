@@ -11,6 +11,13 @@ namespace TODO.Models
     public class User : IUser
     {
         private string username;
+        private string password;
+
+        public User(string username, string password)
+        {
+            this.Username = Username;
+            this.Password = password;
+        }
 
         public ICollection<INotebook> Notebook
         {
@@ -24,7 +31,13 @@ namespace TODO.Models
         {
             get
             {
-                throw new NotImplementedException();
+                return this.password;
+            }
+            private set
+            {
+                Validator.CheckPasswordStrength(value);
+
+                this.password = value;
             }
         }
 

@@ -50,6 +50,7 @@
     <Compile Include="Contracts\ISubTask.cs" />
     <Compile Include="Contracts\ITask.cs" />
     <Compile Include="Contracts\IUser.cs" />
+    <Compile Include="Models\Enums\PasswordStrength.cs" />
     <Compile Include="Models\LongTermTask.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Notebook.cs" />
