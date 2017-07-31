@@ -24,7 +24,7 @@ namespace TODO.Engine
                     {
                         break;
                     }
-                    if (commands == null && string.IsNullOrEmpty(commands[0]))
+                    if (string.IsNullOrEmpty(commands?[0])) // checks if its null or if the first element is nullOrEmpty
                     {
                         continue;
                     }
@@ -33,7 +33,7 @@ namespace TODO.Engine
                     Saver.CreateUserFile(loggedUser);
                     //this.PrintReports(commandResult);
                 }
-                catch (Exception ex )
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                     //Writer.Write(ex.Message);
