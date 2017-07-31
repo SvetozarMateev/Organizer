@@ -12,6 +12,7 @@ namespace TODO
     {
         private IUser author;
 
+
         public IUser Author
         {
             get
@@ -41,7 +42,7 @@ namespace TODO
                 throw new NotImplementedException();
             }
         }
-
+        
         public IReminder Reminder
         {
             get

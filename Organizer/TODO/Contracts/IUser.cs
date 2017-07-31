@@ -9,6 +9,7 @@ namespace TODO.Contracts
         string Username { get; }
         string Password { get; }
         ICollection<INotebook> Notebook { get; }
+
         void AddNotebook();
         void DeleteNotebook();
     }

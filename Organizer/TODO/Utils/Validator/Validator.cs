@@ -54,7 +54,7 @@ namespace TODO.Utils.Validator
 
             //Check for containing both lower and upper case
             if (Regex.Match(password, @"/[a-z]/", RegexOptions.ECMAScript).Success
-                && Regex.Match(password, @"/[A-Z/", RegexOptions.ECMAScript).Success)
+                && Regex.Match(password, @"/[A-Z]/", RegexOptions.ECMAScript).Success)
             {
                 score++;
             }

@@ -15,5 +15,7 @@ namespace TODO.Contracts
         Priority Priority { get; }
         TaskType TaskType { get; }
 
+
+        //void Sort();
     }
 }
