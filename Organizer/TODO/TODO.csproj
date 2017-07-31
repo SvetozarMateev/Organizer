@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\LoginCommand.cs" />
+    <Compile Include="Commands\LogOutCommand.cs" />
     <Compile Include="Commands\RegisterCommand.cs" />
     <Compile Include="Contracts\ILongTermTask.cs" />
     <Compile Include="Contracts\INote.cs" />

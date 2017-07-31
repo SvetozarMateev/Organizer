@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using TODO.Contracts;
+﻿using TODO.Contracts;
 using TODO.Models;
 
 namespace TODO.Factories

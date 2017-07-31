@@ -35,13 +35,13 @@ namespace TODO.Utils.Validator
         {
             int score = 0;
 
-            
-            if (password.Length > 8)
+
+            if (password.Length > 6)
             {
                 score++;
             }
 
-            if (password.Length > 12)
+            if (password.Length > 10)
             {
                 score++;
             }
@@ -61,7 +61,7 @@ namespace TODO.Utils.Validator
             {
                 score++;
             }
-            
+
             switch ((PasswordStrength)score)
             {
                 case PasswordStrength.Blank:
@@ -69,7 +69,7 @@ namespace TODO.Utils.Validator
                 case PasswordStrength.Weak:
                     {
                         throw new ArgumentException($"{(PasswordStrength)score} password is not allowed, please try again.");
-                        
+
                     }
                 case PasswordStrength.Medium:
                 case PasswordStrength.Strong:
@@ -79,7 +79,7 @@ namespace TODO.Utils.Validator
             }
 
         }
-        
+
         #endregion
     }
 }

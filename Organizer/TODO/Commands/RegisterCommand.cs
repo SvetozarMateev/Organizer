@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TODO.Engine;
 
 namespace TODO.Commands
@@ -19,7 +16,7 @@ namespace TODO.Commands
         {
             string username = base.Parameters[1];
             string password = base.Parameters[2];
-            EngineMaikaTI.loggedUser =  base.factory.CreateUser(username, password);
+            EngineMaikaTI.loggedUser = base.factory.CreateUser(username, password);
             Saver.SaveUsernames(username);
             return $"User created: {username}";
         }

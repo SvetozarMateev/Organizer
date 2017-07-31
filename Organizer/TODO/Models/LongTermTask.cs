@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using TODO.Contracts;
 using TODO.Models;
@@ -8,7 +6,7 @@ using TODO.Utils.Validator;
 
 namespace TODO.Models
 {
-    public class LongTermTask : Task, ITask,ILongTermTask
+    public class LongTermTask : Task, ITask, ILongTermTask
     {
         public ICollection<SubTask> AllTasks
         {
@@ -17,7 +15,6 @@ namespace TODO.Models
                 throw new NotImplementedException();
             }
         }
-
 
         public DateTime End
         {

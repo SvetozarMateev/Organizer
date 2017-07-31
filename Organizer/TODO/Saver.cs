@@ -20,7 +20,7 @@ namespace TODO
         }
         public static void CreateUserFile(IUser user)
         {
-            using (StreamWriter writer = new StreamWriter("UserDatabase.txt"))
+            using (StreamWriter writer = new StreamWriter($"{user.Username}_UserDatabase.txt"))
             {
                 writer.WriteLine(user.FormatUserInfoForDB());
             }

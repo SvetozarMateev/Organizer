@@ -10,7 +10,7 @@ namespace TODO.Engine
     public class EngineMaikaTI : IEngine
     {
         private readonly IOrganizerFactory factory = new OrganizerFactory();
-        public static  IUser loggedUser;
+        public static IUser loggedUser;
 
         public void Start()
         {
@@ -30,13 +30,16 @@ namespace TODO.Engine
                     }
 
                     this.ProcessCommands(commands);
-                    Saver.CreateUserFile(loggedUser);
+                    if (loggedUser != null)
+                    {
+                        Saver.CreateUserFile(loggedUser);
+                    }
+
                     //this.PrintReports(commandResult);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    //Writer.Write(ex.Message);
+                    Writer.WriteLine(ex.Message);
                 }
             }
         }
@@ -67,7 +70,10 @@ namespace TODO.Engine
                     command = new LoginCommand(commands);
                     commandResult = command.Execute();
                     break;
-
+                case "logout":
+                    command = new LogOutCommand(commands);
+                    commandResult = command.Execute();
+                    break;
                 default:
                     break;
             }
@@ -77,7 +83,7 @@ namespace TODO.Engine
         private List<string> ReadCommands()
         {
             List<string> commands = Console.ReadLine().ToLower().Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            bool isUserCreatable = loggedUser == null && commands[0] != "login" && commands[0] != "register";  
+            bool isUserCreatable = loggedUser == null && commands[0] != "login" && commands[0] != "register";
             if (isUserCreatable)
             {
                 Writer.NoUserLogged();

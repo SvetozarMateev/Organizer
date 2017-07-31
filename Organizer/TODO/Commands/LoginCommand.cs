@@ -6,7 +6,7 @@ namespace TODO.Commands
 {
     public class LoginCommand : Command, ICommand
     {
-       // private List<string> usernames=
+        // private List<string> usernames=
         public LoginCommand(List<string> input)
             : base(input)
         {
@@ -19,7 +19,6 @@ namespace TODO.Commands
             string password = base.Parameters[2];
             // if()
             return "";
-
         }
     }
 }

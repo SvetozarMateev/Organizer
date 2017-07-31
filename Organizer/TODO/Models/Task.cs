@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using TODO.Contracts;
 using TODO.Models;
 using TODO.Utils.GlobalConstants;
@@ -42,7 +40,7 @@ namespace TODO
                 throw new NotImplementedException();
             }
         }
-        
+
         public IReminder Reminder
         {
             get

@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Runtime.CompilerServices;
 using TODO.Contracts;
 
@@ -20,7 +18,6 @@ namespace TODO.Models
             this.DateOfCreation = DateTime.Now;
             this.IsFavourite = isFavourite;
         }
-
 
         public string Title
         {

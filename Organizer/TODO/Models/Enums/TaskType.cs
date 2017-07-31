@@ -1,6 +1,4 @@
-﻿
-
-namespace TODO.Models
+﻿namespace TODO.Models
 {
     public enum TaskType
     {
@@ -8,7 +6,5 @@ namespace TODO.Models
         Goal,
         HealthAndFitness,
         Work
-
-
     }
 }

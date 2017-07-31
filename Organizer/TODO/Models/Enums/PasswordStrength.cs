@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TODO.Models.Enums
+﻿namespace TODO.Models.Enums
 {
     public enum PasswordStrength
     {

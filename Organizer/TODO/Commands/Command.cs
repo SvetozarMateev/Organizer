@@ -30,6 +30,5 @@ namespace TODO.Engine
         }
 
         public abstract string Execute();
-        
     }
 }

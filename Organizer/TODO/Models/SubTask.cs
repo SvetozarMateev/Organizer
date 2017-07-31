@@ -1,11 +1,9 @@
-﻿
-
-using System;
+﻿using System;
 using TODO.Contracts;
 
 namespace TODO.Models
 {
-    public class SubTask : Task, ITask ,ISubTask
+    public class SubTask : Task, ITask, ISubTask
     {
         public string Content
         {
