@@ -12,5 +12,6 @@ namespace TODO.Contracts
 
         void AddNotebook();
         void DeleteNotebook();
+        void Sort();
     }
 }

@@ -13,6 +13,7 @@ namespace TODO.Contracts
         void AddNote(Note note);
         void DeleteNote(Note note);
         void EditNote(Note note);
-        
+
+        void Sort();
     }
 }

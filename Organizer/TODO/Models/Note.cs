@@ -13,11 +13,11 @@ namespace TODO.Models
         private DateTime dateOfCreation;
         private bool isFavourite;
 
-        public Note(string title, string content, DateTime dateOfCreation, bool isFavourite = false)
+        public Note(string title, string content, bool isFavourite = false)
         {
             this.Title = title;
             this.Content = content;
-            this.DateOfCreation = dateOfCreation;
+            this.DateOfCreation = DateTime.Now;
             this.IsFavourite = isFavourite;
         }
 
@@ -69,7 +69,5 @@ namespace TODO.Models
                 this.isFavourite = value;
             }
         }
-
-       
     }
 }

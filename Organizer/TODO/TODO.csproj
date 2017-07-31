@@ -50,6 +50,10 @@
     <Compile Include="Contracts\ISubTask.cs" />
     <Compile Include="Contracts\ITask.cs" />
     <Compile Include="Contracts\IUser.cs" />
+    <Compile Include="Engine\Command.cs" />
+    <Compile Include="Engine\Engine.cs" />
+    <Compile Include="Engine\ICommand.cs" />
+    <Compile Include="Engine\IEngine.cs" />
     <Compile Include="Models\Enums\PasswordStrength.cs" />
     <Compile Include="Models\LongTermTask.cs" />
     <Compile Include="Models\Note.cs" />
@@ -69,7 +73,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Factories\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

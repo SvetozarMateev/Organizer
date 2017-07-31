@@ -17,7 +17,7 @@ namespace TODO.Utils.Validator
                 throw new ArgumentException($"{input} is not a valid name. Use only letters, numbers and underscore.");
             }
         }
-        public static void CannotBeNull(string input)
+        public static void CannotBeNullOrEmpty(string input)
         {
             if (string.IsNullOrEmpty(input))
             {

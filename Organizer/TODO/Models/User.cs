@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using TODO.Contracts;
 using TODO.Utils.GlobalConstants;
@@ -49,7 +47,7 @@ namespace TODO.Models
             }
             private set
             {
-                Validator.CannotBeNull(value);
+                Validator.CannotBeNullOrEmpty(value);
                 Validator.CheckNameLength(value, Constants.MinUserLength);
                 Validator.CheckUserName(value);
 
@@ -61,10 +59,13 @@ namespace TODO.Models
         {
             throw new NotImplementedException();
         }
-
         public void DeleteNotebook()
         {
             throw new NotImplementedException();
+        }
+        public void Sort()
+        {
+
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using TODO.Contracts;
 
@@ -13,11 +11,11 @@ namespace TODO.Models
         private ICollection<Note> notes;
         private bool isFavourite;
 
-        public Notebook(string name, IUser user, ICollection<Note> notes, bool isFavourite = false)
+        public Notebook(string name, bool isFavourite = false)
         {
             this.Name = name;
-            this.User = user;
-            this.Notes = notes;
+            //this.User = user;
+            this.Notes = new List<Note>();
             this.IsFavourite = isFavourite;
         }
 
@@ -81,6 +79,10 @@ namespace TODO.Models
         }
 
         public void EditNote(Note note)
+        {
+            throw new NotImplementedException();
+        }
+        public void Sort()
         {
             throw new NotImplementedException();
         }
