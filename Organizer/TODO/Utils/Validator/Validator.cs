@@ -45,11 +45,13 @@ namespace TODO.Utils.Validator
             {
                 score++;
             }
+
             // Make the regex expression check only ascii - 0-9
             if (Regex.Match(password, @"/\d+/", RegexOptions.ECMAScript).Success)
             {
                 score++;
             }
+
             //Check for containing both lower and upper case
             if (Regex.Match(password, @"/[a-z]/", RegexOptions.ECMAScript).Success
                 && Regex.Match(password, @"/[A-Z/", RegexOptions.ECMAScript).Success)
