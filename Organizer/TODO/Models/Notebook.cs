@@ -27,7 +27,7 @@ namespace TODO.Models
             }
             set
             {
-                this.IsFavourite = value;
+                this.isFavourite = value;
             }
         }
 

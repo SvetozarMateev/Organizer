@@ -13,10 +13,10 @@ namespace TODO.Utils.GlobalConstants
         //Regex patterns
         // A regex to check if a string contains only letters, numbers and underscore
         
-        public const string RegexNamePattern = @"^[a-zA-Z0-9\_]+$";
+        public const string RegexNamePattern = @"^[a-zA-Z0-9_]+$";
         
         public const int MinUserLength = 3;
-        #endregion
+        #endregion 
 
       
     }

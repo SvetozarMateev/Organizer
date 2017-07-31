@@ -13,7 +13,7 @@ namespace TODO.Models
 
         public User(string username, string password)
         {
-            this.Username = Username;
+            this.Username = username;
             this.Password = password;
         }
 
@@ -66,6 +66,10 @@ namespace TODO.Models
         public void Sort()
         {
 
+        }
+        public string FormatUserInfoForDB()
+        {
+            return $"{this.Username} {this.Password}" + Environment.NewLine; // for now 
         }
     }
 }

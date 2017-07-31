@@ -13,5 +13,6 @@ namespace TODO.Contracts
         void AddNotebook();
         void DeleteNotebook();
         void Sort();
+        string FormatUserInfoForDB();
     }
 }

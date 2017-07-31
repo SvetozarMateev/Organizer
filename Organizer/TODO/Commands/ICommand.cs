@@ -4,8 +4,8 @@ namespace TODO.Engine
 {
     interface ICommand
     {
-        string Name { get; }
-
         List<string> Parameters { get; }
+
+        string Execute();
     }
 }
