@@ -9,10 +9,10 @@ namespace TODO.Contracts
         IUser User { get; }
         bool IsFavourite { get; }
         string Name { get; }
+
         void AddNote(Note note);
         void DeleteNote(Note note);
         void EditNote(Note note);
-
         void Sort();
     }
 }

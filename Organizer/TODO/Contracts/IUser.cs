@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TODO.Models;
 
 namespace TODO.Contracts
 {
@@ -6,9 +7,9 @@ namespace TODO.Contracts
     {
         string Username { get; }
         string Password { get; }
-        ICollection<INotebook> Notebook { get; }
+        ICollection<INotebook> Notebooks { get; }
 
-        void AddNotebook();
+        void AddNotebook(INotebook notebook);
         void DeleteNotebook();
         void Sort();
         string FormatUserInfoForDB();

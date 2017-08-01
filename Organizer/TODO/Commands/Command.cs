@@ -29,6 +29,6 @@ namespace TODO.Engine
             }
         }
 
-        public abstract string Execute();
+        public abstract string Execute { get; }
     }
 }

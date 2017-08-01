@@ -66,5 +66,10 @@ namespace TODO.Models
                 this.isFavourite = value;
             }
         }
+
+        public override string ToString()
+        {
+            return $"{this.Title} {this.Content} {this.DateOfCreation} {this.IsFavourite}";
+        }
     }
 }

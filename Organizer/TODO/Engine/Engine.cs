@@ -59,7 +59,7 @@ namespace TODO.Engine
                         throw new ArgumentException("There is already a logged user");
                     }
                     command = new RegisterCommand(commands);
-                    commandResult = command.Execute();
+                    commandResult = command.Execute;
                     break;
                 case "login":
                 case "log":
@@ -68,11 +68,33 @@ namespace TODO.Engine
                         throw new ArgumentException("There is already a logged user");
                     }
                     command = new LoginCommand(commands);
-                    commandResult = command.Execute();
+                    commandResult = command.Execute;
                     break;
                 case "logout":
                     command = new LogOutCommand(commands);
-                    commandResult = command.Execute();
+                    commandResult = command.Execute;
+                    break;
+                case "add notebook":
+                case "addnotebook":
+                    if (loggedUser == null)
+                    {
+                        throw new ArgumentException("You must be logged to add notebooks");
+                    }
+                    command = new AddNotebookCommand(commands);
+                    commandResult = command.Execute;
+                    break;
+                case "add note":
+                case "addnote":
+                    if (loggedUser == null)
+                    {
+                        throw new ArgumentException("You must be logged to add notebooks");
+                    }
+                    if (loggedUser.Notebooks.Count == 0)
+                    {
+                        throw new ArgumentException("You must create a notebook first");
+                    }
+                    command = new AddNoteCommand(commands);
+                    commandResult = command.Execute;
                     break;
                 default:
                     break;
@@ -82,7 +104,10 @@ namespace TODO.Engine
 
         private List<string> ReadCommands()
         {
-            List<string> commands = Console.ReadLine().ToLower().Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            List<string> commands = Console.ReadLine()
+                .Split(new string[] { " ", "\t" }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(x => x.ToLower())
+                .ToList();
             bool isUserCreatable = loggedUser == null && commands[0] != "login" && commands[0] != "register";
             if (isUserCreatable)
             {

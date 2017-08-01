@@ -13,12 +13,15 @@ namespace TODO.Commands
 
         }
 
-        public override string Execute()
+        public override string Execute
         {
-            string username = base.Parameters[1];
-            string password = base.Parameters[2];
-            // if()
-            return "";
+            get
+            {
+                string username = base.Parameters[1];
+                string password = base.Parameters[2];
+                // if()
+                return "";
+            }
         }
     }
 }

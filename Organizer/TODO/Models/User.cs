@@ -10,18 +10,24 @@ namespace TODO.Models
     {
         private string username;
         private string password;
+        private ICollection<INotebook> notebooks;
 
         public User(string username, string password)
         {
             this.Username = username;
             this.Password = password;
+            this.Notebooks = new List<INotebook>();
         }
 
-        public ICollection<INotebook> Notebook
+        public ICollection<INotebook> Notebooks
         {
             get
             {
-                throw new NotImplementedException();
+                return this.notebooks;
+            }
+            private set
+            {
+                this.notebooks = value;
             }
         }
 
@@ -55,9 +61,9 @@ namespace TODO.Models
             }
         }
 
-        public void AddNotebook()
+        public void AddNotebook(INotebook notebook)
         {
-            throw new NotImplementedException();
+            this.notebooks.Add(notebook);
         }
         public void DeleteNotebook()
         {
@@ -69,7 +75,8 @@ namespace TODO.Models
         }
         public string FormatUserInfoForDB()
         {
-            return $"{this.Username} {this.Password}" + Environment.NewLine; // for now 
+            return $"{this.Username} {this.Password}" + Environment.NewLine +
+                $"{string.Join("\n-----", this.Notebooks)}";  // for now 
         }
     }
 }

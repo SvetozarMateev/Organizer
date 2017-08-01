@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TODO.Contracts;
+using TODO.Engine;
 
 namespace TODO.Models
 {
@@ -17,6 +18,7 @@ namespace TODO.Models
             //this.User = user;
             this.Notes = new List<Note>();
             this.IsFavourite = isFavourite;
+            this.User = EngineMaikaTI.loggedUser;
         }
 
         public bool IsFavourite
@@ -65,8 +67,7 @@ namespace TODO.Models
             {
                 this.user = value;
             }
-        }
-
+        } // tova mai e izlishno, po dobre samo user-a da si pasi Notebook -Marto
 
         public void AddNote(Note note)
         {
@@ -85,6 +86,12 @@ namespace TODO.Models
         public void Sort()
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return $"{this.Name} {this.IsFavourite}{Environment.NewLine}" +
+                $"{string.Join(" ", this.Notes)}"; // without the user info 
         }
     }
 }
