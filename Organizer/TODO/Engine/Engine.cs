@@ -71,6 +71,10 @@ namespace TODO.Engine
                     commandResult = command.Execute;
                     break;
                 case "logout":
+                    if (loggedUser == null)
+                    {
+                        throw new ArgumentException("You aren't logged !");
+                    }
                     command = new LogOutCommand(commands);
                     commandResult = command.Execute;
                     break;
@@ -85,7 +89,7 @@ namespace TODO.Engine
                 case "addnote":
                     if (loggedUser == null)
                     {
-                        throw new ArgumentException("You must be logged to add notebooks");
+                        throw new ArgumentException("You must be logged to add notes");
                     }
                     if (loggedUser.Notebooks.Count == 0)
                     {
@@ -110,7 +114,9 @@ namespace TODO.Engine
                 .Split(new string[] { " ", "\t" }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(x => x.ToLower())
                 .ToList();
+
             bool isUserCreatable = loggedUser == null && commands[0] != "login" && commands[0] != "register";
+
             if (isUserCreatable)
             {
                 Writer.NoUserLogged();

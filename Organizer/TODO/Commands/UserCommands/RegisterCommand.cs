@@ -19,7 +19,7 @@ namespace TODO.Commands
                 string username = base.Parameters[1];
                 string password = base.Parameters[2];
                 EngineMaikaTI.loggedUser = base.factory.CreateUser(username, password);
-                Saver.SaveUsernames(username);
+                Saver.SaveUsernamesAndPasswords(username,password);
                 return $"User created: {username}";
             }
         }

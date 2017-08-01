@@ -9,7 +9,7 @@ namespace TODO
 {
     public static class Loader
     {
-        public static List<string> LoadUsernames()
+        public static List<string> LoadUsernamesAndPasswords()
         {
             List<string> allUsers = new List<string>();
             using (StreamReader reader = new StreamReader("DatabaseOfUsernames.txt"))

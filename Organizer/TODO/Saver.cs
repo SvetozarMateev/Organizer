@@ -11,11 +11,12 @@ namespace TODO
 {
     public static class Saver
     {
-        public static void SaveUsernames(string usernames)
+        public static void SaveUsernamesAndPasswords(string usernames, string password)
         {
             using (StreamWriter writer = new StreamWriter("DatabaseOfUsernames.txt", true))
             {
-                writer.WriteLine(usernames);
+                writer.Write(usernames);
+                writer.WriteLine($" {password}");
             }
         }
         public static void CreateUserFile(IUser user)

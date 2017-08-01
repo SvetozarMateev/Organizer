@@ -43,12 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\AddNotebookCommand.cs" />
-    <Compile Include="Commands\AddNoteCommand.cs" />
-    <Compile Include="Commands\LoginCommand.cs" />
-    <Compile Include="Commands\LogOutCommand.cs" />
-    <Compile Include="Commands\RegisterCommand.cs" />
-    <Compile Include="Commands\SwitchNotebookCommand.cs" />
+    <Compile Include="Commands\NotebookCommands\AddNotebookCommand.cs" />
+    <Compile Include="Commands\NotebookCommands\AddNoteCommand.cs" />
+    <Compile Include="Commands\UserCommands\LoginCommand.cs" />
+    <Compile Include="Commands\UserCommands\LogOutCommand.cs" />
+    <Compile Include="Commands\UserCommands\RegisterCommand.cs" />
+    <Compile Include="Commands\NotebookCommands\SwitchNotebookCommand.cs" />
     <Compile Include="Contracts\ILongTermTask.cs" />
     <Compile Include="Contracts\INote.cs" />
     <Compile Include="Contracts\INotebook.cs" />
