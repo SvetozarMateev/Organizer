@@ -11,6 +11,7 @@ namespace TODO.Engine
     {
         private readonly IOrganizerFactory factory = new OrganizerFactory();
         public static IUser loggedUser;
+        public static INotebook currentNotebook;
 
         public void Start()
         {
@@ -34,7 +35,6 @@ namespace TODO.Engine
                     {
                         Saver.CreateUserFile(loggedUser);
                     }
-
                     //this.PrintReports(commandResult);
                 }
                 catch (Exception ex)
@@ -74,7 +74,6 @@ namespace TODO.Engine
                     command = new LogOutCommand(commands);
                     commandResult = command.Execute;
                     break;
-                case "add notebook":
                 case "addnotebook":
                     if (loggedUser == null)
                     {
@@ -83,7 +82,6 @@ namespace TODO.Engine
                     command = new AddNotebookCommand(commands);
                     commandResult = command.Execute;
                     break;
-                case "add note":
                 case "addnote":
                     if (loggedUser == null)
                     {
@@ -94,6 +92,10 @@ namespace TODO.Engine
                         throw new ArgumentException("You must create a notebook first");
                     }
                     command = new AddNoteCommand(commands);
+                    commandResult = command.Execute;
+                    break;
+                case "switchnotebook":
+                    command = new SwitchNotebookCommand(commands);
                     commandResult = command.Execute;
                     break;
                 default:
@@ -114,16 +116,6 @@ namespace TODO.Engine
                 Writer.NoUserLogged();
                 ReadCommands();
             }
-
-            //var currentLine = Console.ReadLine();
-
-            //while (!string.IsNullOrEmpty(currentLine))
-            //{
-            //    var currentCommand = new Command(currentLine);
-            //    commands.Add(currentCommand);
-
-            //    currentLine = Console.ReadLine();
-            //}
             return commands;
         }
     }

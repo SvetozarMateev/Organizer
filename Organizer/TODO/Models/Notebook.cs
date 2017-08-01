@@ -9,16 +9,15 @@ namespace TODO.Models
     {
         private string name;
         private IUser user;
-        private ICollection<Note> notes;
+        private ICollection<INote> notes;
         private bool isFavourite;
 
         public Notebook(string name, bool isFavourite = false)
         {
             this.Name = name;
-            //this.User = user;
-            this.Notes = new List<Note>();
+            this.Notes = new List<INote>();
             this.IsFavourite = isFavourite;
-            this.User = EngineMaikaTI.loggedUser;
+           // this.User = EngineMaikaTI.loggedUser;
         }
 
         public bool IsFavourite
@@ -45,7 +44,7 @@ namespace TODO.Models
             }
         }
 
-        public ICollection<Note> Notes
+        public ICollection<INote> Notes
         {
             get
             {
@@ -57,21 +56,21 @@ namespace TODO.Models
             }
         }
 
-        public IUser User
-        {
-            get
-            {
-                return this.user;
-            }
-            set
-            {
-                this.user = value;
-            }
-        } // tova mai e izlishno, po dobre samo user-a da si pasi Notebook -Marto
+       //public IUser User
+       // {
+       //     get
+       //     {
+       //         return this.user;
+       //     }
+       //     set
+       //     {
+       //         this.user = value;
+       //     }
+       // } 
 
-        public void AddNote(Note note)
+        public void AddNote(INote note)
         {
-            throw new NotImplementedException();
+            this.Notes.Add(note);
         }
 
         public void DeleteNote(Note note)

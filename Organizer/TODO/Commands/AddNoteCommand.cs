@@ -19,9 +19,9 @@ namespace TODO.Commands
             get
             {
                 string title = base.Parameters[1];
-                string content = base.Parameters[2];
-                INote note = this.factory.CreateNote(title,content);
-                // TODO: note should be added to a notebook
+                List<string> content = base.Parameters.Skip(2).ToList();
+                INote note = this.factory.CreateNote(title,String.Join(" ", content));
+                EngineMaikaTI.currentNotebook.AddNote(note);
 
                 return $"Note {title} added successfully !";
             }

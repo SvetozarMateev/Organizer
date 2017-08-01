@@ -20,6 +20,7 @@ namespace TODO.Commands
                 string notebookName = base.Parameters[1];
                 INotebook notebook = base.factory.CreateNotebook(notebookName);
                 EngineMaikaTI.loggedUser.AddNotebook(notebook);
+                EngineMaikaTI.currentNotebook = notebook;
 
                 return $"Notebook \"{notebookName}\" added successfully !";
             }
