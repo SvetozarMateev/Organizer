@@ -24,6 +24,7 @@ namespace TODO
             }
             return allUsers;
         }
+
         public static IUser LoadUser(string username, string password)
         {
 
@@ -38,9 +39,26 @@ namespace TODO
                         break;
                     currNotebooks.Add(LoadNotebook(attrLine));                 
                 }
-                return new User(username, password, currNotebooks);
+                List<ITask> currTasks = new List<ITask>();
+                while (true)
+                {
+                    string attrLine = reader.ReadLine();
+                    if (attrLine == "___***___")
+                        break;
+                    currTasks.Add(LoadTask(attrLine));
+                }
+                List<ILongTermTask> currLongTermTasks = new List<ILongTermTask>();
+                while (true)
+                {
+                    string attrLine = reader.ReadLine();
+                    if (attrLine == "---***---")
+                        break;
+                    currLongTermTasks.Add(LoadLongTermTask(attrLine));
+                }
+                return new User(username, password, currNotebooks,currTasks);
             }
         }
+
         public static INotebook LoadNotebook(string entryParameters)
         {
             string[] refinedParameteres = entryParameters
@@ -75,6 +93,45 @@ namespace TODO
             var content = string.Join(" ",refinedNoteParams.Skip(3));
 
             return new Note(refinedNoteParams[0], content, refinednoteParam, dt);
+        }
+        private static ISubTask LoadSubTask(string subTaskParams)
+        {
+
+            string[] refinedTaskParams = subTaskParams.Split(' ').ToArray();
+            string title = refinedTaskParams[0];
+            Priority priority;
+            Enum.TryParse(refinedTaskParams[1], out priority);
+            //TODO implement when reminder is not null
+            DateTime dtStart = DateTime.ParseExact(refinedTaskParams[3], Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
+            DateTime dtDueDate= DateTime.ParseExact(refinedTaskParams[4], Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
+            double importancePercent = double.Parse(refinedTaskParams[5]);
+            string description = string.Join(" ", refinedTaskParams.Skip(6));
+            return new SubTask(title, priority, description, dtDueDate, importancePercent, dtStart,);
+        }
+        private static ITask LoadTask(string entryParams)
+        {
+            string[] refinedTaskParams = entryParams.Split(' ').ToArray();
+            string title = refinedTaskParams[0];
+            Priority priority;
+            Enum.TryParse(refinedTaskParams[1], out priority);
+            //TODO implement when reminder is not null
+            DateTime dt = DateTime.ParseExact(refinedTaskParams[3], Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
+            string description = string.Join(" ", refinedTaskParams.Skip(4));
+            return new Task(title, priority, description);
+        }
+        private static ILongTermTask LoadLongTermTask(string entryParams)
+        {
+
+            string[] refinedTaskParams = entryParams.Split(' ').ToArray();
+            string title = refinedTaskParams[0];
+            Priority priority;
+            Enum.TryParse(refinedTaskParams[1], out priority);
+            //TODO implement when reminder is not null
+            DateTime dtStart = DateTime.ParseExact(refinedTaskParams[3], Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
+            //TODO implement when subtasks are more than 0
+            DateTime dtEnd = DateTime.ParseExact(refinedTaskParams[4], Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
+            string description = string.Join(" ", refinedTaskParams.Skip(5));
+            return new LongTermTask(title, priority, description,dtEnd, dtStart);
         }
     }
 }

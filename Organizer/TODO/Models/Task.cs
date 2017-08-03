@@ -14,13 +14,13 @@ namespace TODO
         private IReminder reminder;
         private DateTime start;
 
-        public Task(string title, Priority priority, string description)     
+        public Task(string title, Priority priority, string description, DateTime start = default(DateTime), Reminder reminder=null)     
         {
             this.Title = title;
             this.Description = description;
             this.Priority = priority;
-            this.Start = DateTime.Now;
-            this.Reminder = new Reminder();
+            this.Start = start;
+            this.Reminder = reminder;
         }
 
         public string Title
@@ -67,7 +67,15 @@ namespace TODO
             }
             private set
             {
-                this.reminder = value;
+                if (value == null)
+                {
+                    this.reminder = new Reminder();
+                }
+                else
+                {
+                    this.reminder = value;
+
+                }
             }
         }
 
@@ -79,7 +87,15 @@ namespace TODO
             }
             private set
             {
-                this.start = value;
+                if (value == default(DateTime))
+                {
+                    this.start = DateTime.Now;
+                }
+                else
+                {
+                    this.start = value;
+
+                }
             }
         }
         public virtual string AdditionalInformation()
@@ -88,7 +104,7 @@ namespace TODO
         }
         public virtual string FormatUserInfoForDB()
         {
-            return $"{this.Title} {this.Priority} {(this.Reminder.MomentsOfBeeping.Count == 0 ? "" : this.Reminder.ToString())}" +
+            return $"{this.Title} {this.Priority} {(this.Reminder.MomentsOfBeeping.Count == 0 ? "None" : this.Reminder.ToString())}" +
                 $" {this.Start.ToString("dd/MM/yyyy")} {AdditionalInformation()}{this.Description}";
         }
     }

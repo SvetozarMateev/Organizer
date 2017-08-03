@@ -14,8 +14,8 @@ namespace TODO.Models
         private ICollection<ISubTask> allTasks;
         private DateTime end;
 
-        public LongTermTask(string title, Priority priority, string description, DateTime end)
-            : base(title, priority, description)
+        public LongTermTask(string title, Priority priority, string description , DateTime end, DateTime start=default(DateTime)  )
+            : base(title, priority, description,start)
         {
             this.End = end;
             this.AllTasks = new List<ISubTask>();
@@ -68,11 +68,8 @@ namespace TODO.Models
         }
         public override string AdditionalInformation()
         {
-            return string.Join(",", this.AllTasks) + " ";
+            return string.Join(",", this.AllTasks)+" "+ End.ToString("dd/MM/yyyy/HH/mm") + " ";
         }
-        public override string FormatUserInfoForDB()
-        {
-            return base.FormatUserInfoForDB() + End.ToString("dd/MM/yyyy/HH/mm");
-        }
+        
     }
 }
