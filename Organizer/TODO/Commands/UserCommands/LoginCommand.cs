@@ -14,28 +14,25 @@ namespace TODO.Commands
         {
         }
 
-        public override string Execute
+        public override string Execute()
         {
-            get
-            {
-                string username = base.Parameters[1];
-                string password = base.Parameters[2];
+            string username = base.Parameters[1];
+            string password = base.Parameters[2];
 
-                if (CheckCredentials(username, password))
+            if (CheckCredentials(username, password))
+            {
+                // TODO: (**only if there isn't already a user) traverse file directory for the database of the username and
+                // create a new user with everything in his database.txt :D + change loggedUser
+                EngineMaikaTI.loggedUser = Loader.LoadUser(username, password);
+                if (EngineMaikaTI.loggedUser.Notebooks.Count > 0)
                 {
-                    // TODO: (**only if there isn't already a user) traverse file directory for the database of the username and
-                    // create a new user with everything in his database.txt :D + change loggedUser
-                    EngineMaikaTI.loggedUser = Loader.LoadUser(username, password);
-                    if (EngineMaikaTI.loggedUser.Notebooks.Count > 0)
-                    {
-                        EngineMaikaTI.currentNotebook = EngineMaikaTI.loggedUser.Notebooks.First();
-                    }
-                  
-                    
-                    return "Successfully logged !" + " but not implemented yet";
+                    EngineMaikaTI.currentNotebook = EngineMaikaTI.loggedUser.Notebooks.First();
                 }
-                return "Wrong Credentials";
+
+
+                return "Successfully logged !" + " but not implemented yet";
             }
+            return "Wrong Credentials";
         }
 
         private bool CheckCredentials(string inputUsername, string inputPassword)

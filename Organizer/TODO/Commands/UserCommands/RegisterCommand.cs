@@ -12,16 +12,13 @@ namespace TODO.Commands
 
         }
 
-        public override string Execute
+        public override string Execute()
         {
-            get
-            {
-                string username = base.Parameters[1];
+            string username = base.Parameters[1];
                 string password = base.Parameters[2];
                 EngineMaikaTI.loggedUser = base.factory.CreateUser(username, password);
                 Saver.SaveUsernamesAndPasswords(username,password);
                 return $"User created: {username}";
-            }
         }
     }
 }

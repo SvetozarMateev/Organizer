@@ -8,6 +8,11 @@ namespace TODO.Models
 {
     public class LongTermTask : Task, ITask, ILongTermTask
     {
+        public LongTermTask(string title, Priority priority, string description)
+            : base(title, priority, description)
+        {
+        }
+
         public ICollection<SubTask> AllTasks
         {
             get

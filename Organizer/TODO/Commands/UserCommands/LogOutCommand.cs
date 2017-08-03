@@ -11,13 +11,10 @@ namespace TODO.Commands
         {
         }
 
-        public override string Execute
+        public override string Execute()
         {
-            get
-            {
-                EngineMaikaTI.loggedUser = null;
-                return $"Successfully logged Out";
-            }
+            EngineMaikaTI.loggedUser = null;
+            return $"Successfully logged Out";
         }
     }
 }

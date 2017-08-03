@@ -3,15 +3,13 @@ using TODO.Models;
 
 namespace TODO.Contracts
 {
-    public interface ITask
+    public interface ITask : ISaveable
     {
         string Title { get; }
         string Description { get; }
         DateTime Start { get; }
         IReminder Reminder { get; }
-        IUser Author { get; }
         Priority Priority { get; }
-        TaskType TaskType { get; }
 
         //void Sort();
     }

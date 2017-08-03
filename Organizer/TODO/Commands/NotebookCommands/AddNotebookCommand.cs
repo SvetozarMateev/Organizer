@@ -13,17 +13,14 @@ namespace TODO.Commands
         {
         }
 
-        public override string Execute
+        public override string Execute()
         {
-            get
-            {
-                string notebookName = base.Parameters[1];
-                INotebook notebook = base.factory.CreateNotebook(notebookName);
-                EngineMaikaTI.loggedUser.AddNotebook(notebook);
-                EngineMaikaTI.currentNotebook = notebook;
+            string notebookName = base.Parameters[1];
+            INotebook notebook = base.factory.CreateNotebook(notebookName);
+            EngineMaikaTI.loggedUser.AddNotebook(notebook);
+            EngineMaikaTI.currentNotebook = notebook;
 
-                return $"Notebook \"{notebookName}\" added successfully !";
-            }
+            return $"Notebook \"{notebookName}\" added successfully !";
         }
     }
 }

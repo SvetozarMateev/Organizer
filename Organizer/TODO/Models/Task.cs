@@ -6,30 +6,44 @@ using TODO.Utils.Validator;
 
 namespace TODO
 {
-    public class Task : ITask
+    public class Task : ITask, ISaveable
     {
-        private IUser author;
+        private string title;
+        private string description;
+        private Priority priority;
+        private IReminder reminder;
+        private DateTime start;
 
+        public Task(string title, Priority priority, string description)     
+        {
+            this.Title = title;
+            this.Description = description;
+            this.Priority = priority;
+            this.Start = DateTime.Now;
+            this.Reminder = new Reminder();
+        }
 
-        public IUser Author
+        public string Title
         {
             get
             {
-                return this.author;
+                return this.title;
             }
             private set
             {
-                // TODO validations
-                this.author = value;
+                this.title = value;
             }
-
         }
 
         public string Description
         {
             get
             {
-                throw new NotImplementedException();
+                return this.description;
+            }
+            private set
+            {
+                this.description = value;
             }
         }
 
@@ -37,7 +51,11 @@ namespace TODO
         {
             get
             {
-                throw new NotImplementedException();
+                return this.priority;
+            }
+            private set
+            {
+                this.priority = value;
             }
         }
 
@@ -45,7 +63,11 @@ namespace TODO
         {
             get
             {
-                throw new NotImplementedException();
+                return this.reminder;
+            }
+            private set
+            {
+                this.reminder = value;
             }
         }
 
@@ -53,24 +75,18 @@ namespace TODO
         {
             get
             {
-                throw new NotImplementedException();
+                return this.start;
+            }
+            private set
+            {
+                this.start = value;
             }
         }
 
-        public TaskType TaskType
+        public string FormatUserInfoForDB()
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string Title
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            return $"{this.Title} {this.Priority} {(this.Reminder.MomentsOfBeeping.Count == 0 ? "" : this.Reminder.ToString())}" +
+                $" {this.Start.ToString("dd/MM/yyyy")} {this.Description}";
         }
     }
 }

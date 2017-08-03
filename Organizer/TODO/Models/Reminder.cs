@@ -6,11 +6,22 @@ namespace TODO.Models
 {
     public class Reminder : IReminder
     {
+        private ICollection<DateTime> momentsOfBeeping;
+
+        public Reminder()
+        {
+            this.MomentsOfBeeping = new List<DateTime>();
+        }
+
         public ICollection<DateTime> MomentsOfBeeping
         {
             get
             {
-                throw new NotImplementedException();
+                return this.momentsOfBeeping;
+            }
+            private set
+            {
+                this.momentsOfBeeping = value;
             }
         }
 

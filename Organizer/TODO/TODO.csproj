@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\AddTaskCommand.cs" />
     <Compile Include="Commands\NotebookCommands\AddNotebookCommand.cs" />
     <Compile Include="Commands\NotebookCommands\AddNoteCommand.cs" />
     <Compile Include="Commands\UserCommands\LoginCommand.cs" />

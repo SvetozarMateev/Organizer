@@ -59,7 +59,7 @@ namespace TODO.Engine
                         throw new ArgumentException("There is already a logged user");
                     }
                     command = new RegisterCommand(commands);
-                    commandResult = command.Execute;
+                    commandResult = command.Execute();
                     break;
                 case "login":
                 case "log":
@@ -68,7 +68,7 @@ namespace TODO.Engine
                         throw new ArgumentException("There is already a logged user");
                     }
                     command = new LoginCommand(commands);
-                    commandResult = command.Execute;
+                    commandResult = command.Execute();
                     break;
                 case "logout":
                     if (loggedUser == null)
@@ -76,7 +76,7 @@ namespace TODO.Engine
                         throw new ArgumentException("You aren't logged !");
                     }
                     command = new LogOutCommand(commands);
-                    commandResult = command.Execute;
+                    commandResult = command.Execute();
                     break;
                 case "addnotebook":
                     if (loggedUser == null)
@@ -84,7 +84,7 @@ namespace TODO.Engine
                         throw new ArgumentException("You must be logged to add notebooks");
                     }
                     command = new AddNotebookCommand(commands);
-                    commandResult = command.Execute;
+                    commandResult = command.Execute();
                     break;
                 case "addnote":
                     if (loggedUser == null)
@@ -96,11 +96,19 @@ namespace TODO.Engine
                         throw new ArgumentException("You must create a notebook first");
                     }
                     command = new AddNoteCommand(commands);
-                    commandResult = command.Execute;
+                    commandResult = command.Execute();
                     break;
                 case "switchnotebook":
                     command = new SwitchNotebookCommand(commands);
-                    commandResult = command.Execute;
+                    commandResult = command.Execute();
+                    break;
+                case "addtask":
+                    if (loggedUser == null)
+                    {
+                        throw new ArgumentException("You must be logged in");
+                    }
+                    command = new AddTaskCommand(commands);
+                    commandResult = command.Execute();
                     break;
                 default:
                     break;

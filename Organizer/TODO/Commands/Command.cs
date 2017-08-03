@@ -33,6 +33,6 @@ namespace TODO.Engine
             }
         }
 
-        public abstract string Execute { get; }
+        public abstract string Execute();
     }
 }

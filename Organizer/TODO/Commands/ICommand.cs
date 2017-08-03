@@ -6,6 +6,6 @@ namespace TODO.Engine
     {
         List<string> Parameters { get; }
 
-        string Execute { get; }
+        string Execute();
     }
 }

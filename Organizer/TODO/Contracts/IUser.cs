@@ -8,9 +8,11 @@ namespace TODO.Contracts
         string Username { get; }
         string Password { get; }
         ICollection<INotebook> Notebooks { get; }
+        ICollection<ITask> Tasks { get; }
 
         void AddNotebook(INotebook notebook);
         void DeleteNotebook();
+        void AddTask(ITask task);
         void Sort();
         string FormatUserInfoForDB();
     }

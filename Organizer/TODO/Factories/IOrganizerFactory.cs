@@ -9,5 +9,7 @@ namespace TODO.Factories
         INotebook CreateNotebook(string name);
 
         INote CreateNote(string title, string content);
+
+        ITask CreateTask(string title, string description, string priority);
     }
 }

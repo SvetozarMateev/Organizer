@@ -12,17 +12,14 @@ namespace TODO.Commands
         {
         }
 
-        public override string Execute
+        public override string Execute()
         {
-            get
+            string newNotebookName = base.Parameters[1];
+            if (!SearchForNotebook(newNotebookName))
             {
-                string newNotebookName = base.Parameters[1];
-                if (!SearchForNotebook(newNotebookName))
-                {
-                    return $"You don't have a notebook with this name";
-                }
-                return $"Successfully switched to {newNotebookName} notebook";
+                return $"You don't have a notebook with this name";
             }
+            return $"Successfully switched to {newNotebookName} notebook";
         }
 
         private bool SearchForNotebook(string newNotebookName)

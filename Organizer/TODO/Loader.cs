@@ -43,9 +43,18 @@ namespace TODO
         }
         public static INotebook LoadNotebook(string entryParameters)
         {
-            string[] refinedParameteres = entryParameters.Split(new string[] { ":::" }, StringSplitOptions.RemoveEmptyEntries).ToArray();
-            string[] notebookParams = refinedParameteres[0].Split(' ').ToArray();
-            string[] noteParams = refinedParameteres[1].Split(new string[] { ",,," }, StringSplitOptions.RemoveEmptyEntries).ToArray();
+            string[] refinedParameteres = entryParameters
+                .Split(new string[] { ":::" }, StringSplitOptions.RemoveEmptyEntries)
+                .ToArray();
+
+            string[] notebookParams = refinedParameteres[0]
+                .Split(' ')
+                .ToArray();
+
+            string[] noteParams = refinedParameteres[1]
+                .Split(new string[] { ",,," }, StringSplitOptions.RemoveEmptyEntries)
+                .ToArray();
+
             List<INote> currNotes = new List<INote>();
             for (int i = 0; i < noteParams.Length; i++)
             {
@@ -62,9 +71,9 @@ namespace TODO
             string[] refinedNoteParams = noteParams.Split(' ');
 
             bool refinednoteParam = refinedNoteParams[1] == "True";
-
             var dt = DateTime.ParseExact(refinedNoteParams[2], "dd.MM.yyyy", CultureInfo.InvariantCulture);
             var content = string.Join(" ",refinedNoteParams.Skip(3));
+
             return new Note(refinedNoteParams[0], content, refinednoteParam, dt);
         }
     }
