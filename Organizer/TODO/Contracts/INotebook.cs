@@ -3,7 +3,7 @@ using TODO.Models;
 
 namespace TODO.Contracts
 {
-    public interface INotebook
+    public interface INotebook : ISaveable
     {
         ICollection<INote> Notes { get; }
        // IUser User { get; }

@@ -25,7 +25,11 @@ namespace TODO.Engine
 
             private set
             {
-                this.parameters = value ?? throw new ArgumentNullException("List of strings cannot be null.");
+                if (value == null)
+                {
+                    throw new ArgumentNullException("List of strings cannot be null.");
+                }
+                this.parameters = value;
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TODO.Engine;
 
 namespace TODO.Commands
@@ -24,6 +25,13 @@ namespace TODO.Commands
                 {
                     // TODO: (**only if there isn't already a user) traverse file directory for the database of the username and
                     // create a new user with everything in his database.txt :D + change loggedUser
+                    EngineMaikaTI.loggedUser = Loader.LoadUser(username, password);
+                    if (EngineMaikaTI.loggedUser.Notebooks.Count > 0)
+                    {
+                        EngineMaikaTI.currentNotebook = EngineMaikaTI.loggedUser.Notebooks.First();
+                    }
+                  
+                    
                     return "Successfully logged !" + " but not implemented yet";
                 }
                 return "Wrong Credentials";

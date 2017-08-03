@@ -4,18 +4,18 @@ using TODO.Contracts;
 
 namespace TODO.Models
 {
-    public class Note : INote
+    public class Note : INote, ISaveable
     {
         private string title;
         private string content;
         private DateTime dateOfCreation;
         private bool isFavourite;
 
-        public Note(string title, string content, bool isFavourite = false)
+        public Note(string title, string content, bool isFavourite = false, DateTime dateOfCreation = default(DateTime))
         {
             this.Title = title;
             this.Content = content;
-            this.DateOfCreation = DateTime.Now;
+            this.DateOfCreation = dateOfCreation;
             this.IsFavourite = isFavourite;
         }
 
@@ -51,7 +51,14 @@ namespace TODO.Models
             }
             private set
             {
-                this.dateOfCreation = value;
+                if (value == default(DateTime))
+                {
+                    this.dateOfCreation = DateTime.Now;
+                }
+                else
+                {
+                    this.dateOfCreation = value;
+                }
             }
         }
 
@@ -67,9 +74,10 @@ namespace TODO.Models
             }
         }
 
-        public override string ToString()
+       
+        public string FormatUserInfoForDB()
         {
-            return $"{this.Title} {this.Content} {this.DateOfCreation} {this.IsFavourite}";
+            return $"{this.Title} {this.IsFavourite} {this.DateOfCreation.ToString("dd/MM/yyyy")} {this.Content} ";
         }
     }
 }

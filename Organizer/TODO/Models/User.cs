@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TODO.Contracts;
 using TODO.Utils.GlobalConstants;
 using TODO.Utils.Validator;
 
 namespace TODO.Models
 {
-    public class User : IUser
+    public class User : IUser, ISaveable
     {
         private string username;
         private string password;
         private ICollection<INotebook> notebooks;
 
-        public User(string username, string password)
+        public User(string username, string password, ICollection<INotebook> notebooks = null)
         {
             this.Username = username;
             this.Password = password;
-            this.Notebooks = new List<INotebook>();
+            this.Notebooks = notebooks;
         }
 
         public ICollection<INotebook> Notebooks
@@ -27,7 +28,15 @@ namespace TODO.Models
             }
             private set
             {
-                this.notebooks = value;
+                if (value == null)
+                {
+                    this.notebooks = new List<INotebook>();
+                }
+                else
+                {
+                    this.notebooks = value;
+
+                }
             }
         }
 
@@ -76,7 +85,8 @@ namespace TODO.Models
         public string FormatUserInfoForDB()
         {
             return $"{this.Username} {this.Password}" + Environment.NewLine +
-                $"{string.Join("\n-----", this.Notebooks)}";  // for now 
+                $"{(this.Notebooks.Count == 0 ?"" : string.Join(Environment.NewLine, this.Notebooks.Select(x=>x.FormatUserInfoForDB())))}"
+                + Environment.NewLine+"---***---"+ Environment.NewLine;  
         }
     }
 }

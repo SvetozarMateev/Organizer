@@ -13,7 +13,7 @@ namespace TODO
     {
         public static void SaveUsernamesAndPasswords(string usernames, string password)
         {
-            using (StreamWriter writer = new StreamWriter("DatabaseOfUsernames.txt", true))
+            using (StreamWriter writer = new StreamWriter("../../../../Database/DatabaseOfUsernames.txt", true))
             {
                 writer.Write(usernames);
                 writer.WriteLine($" {password}");
@@ -21,7 +21,7 @@ namespace TODO
         }
         public static void CreateUserFile(IUser user)
         {
-            using (StreamWriter writer = new StreamWriter($"{user.Username}_UserDatabase.txt"))
+            using (StreamWriter writer = new StreamWriter($"../../../../Database/{user.Username}_UserDatabase.txt"))
             {
                 writer.WriteLine(user.FormatUserInfoForDB());
             }

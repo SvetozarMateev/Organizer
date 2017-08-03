@@ -16,6 +16,8 @@ namespace TODO.Utils.GlobalConstants
         public const string RegexNamePattern = @"^[a-zA-Z0-9_]+$";
 
         public const int MinUserLength = 3;
+
+        public const string PathToDatabase = "../../../../Database";
         #endregion
 
 

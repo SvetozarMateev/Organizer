@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TODO.Contracts;
 using TODO.Engine;
 
 namespace TODO.Models
 {
-    public class Notebook : INotebook
+    public class Notebook : INotebook, ISaveable
     {
         private string name;
         private IUser user;
         private ICollection<INote> notes;
         private bool isFavourite;
 
-        public Notebook(string name, bool isFavourite = false)
+        public Notebook(string name, bool isFavourite = false, List<INote> notes = null)
         {
             this.Name = name;
-            this.Notes = new List<INote>();
+            this.Notes = notes;
             this.IsFavourite = isFavourite;
            // this.User = EngineMaikaTI.loggedUser;
         }
@@ -52,7 +53,14 @@ namespace TODO.Models
             }
             set
             {
-                this.notes = value;
+                if (value == null)
+                {
+                    this.notes = new List<INote>();
+                }
+                else
+                {
+                    this.notes = value;
+                }
             }
         }
 
@@ -86,11 +94,11 @@ namespace TODO.Models
         {
             throw new NotImplementedException();
         }
+      
 
-        public override string ToString()
+        public string FormatUserInfoForDB()
         {
-            return $"{this.Name} {this.IsFavourite}{Environment.NewLine}" +
-                $"{string.Join(" ", this.Notes)}"; // without the user info 
+            return $"{this.Name} {this.IsFavourite}:::{string.Join(",,,", this.Notes.Select(x=>x.FormatUserInfoForDB()))}";
         }
     }
 }

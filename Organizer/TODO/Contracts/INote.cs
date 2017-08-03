@@ -2,7 +2,7 @@
 
 namespace TODO.Contracts
 {
-    public interface INote
+    public interface INote: ISaveable
     {
         string Title { get; }
         string Content { get; }
