@@ -12,6 +12,7 @@ namespace TODO.Engine
         private readonly IOrganizerFactory factory = new OrganizerFactory();
         public static IUser loggedUser;
         public static INotebook currentNotebook;
+        public static ILongTermTask currentLongTermTask;
 
         public void Start()
         {
@@ -108,6 +109,22 @@ namespace TODO.Engine
                         throw new ArgumentException("You must be logged in");
                     }
                     command = new AddTaskCommand(commands);
+                    commandResult = command.Execute();
+                    break;
+                case "addlongtermtask":
+                    if (loggedUser == null)
+                    {
+                        throw new ArgumentException("You must be logged in");
+                    }
+                    command = new AddLongTermTaskCommand(commands);
+                    commandResult = command.Execute();
+                    break;
+                case "addsubtask":
+                    if (loggedUser == null)
+                    {
+                        throw new ArgumentException("You must be logged in");
+                    }
+                    command = new AddSubtaskCommand(commands);
                     commandResult = command.Execute();
                     break;
                 default:

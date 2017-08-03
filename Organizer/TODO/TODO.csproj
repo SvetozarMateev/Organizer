@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\AddLongTermTaskCommand.cs" />
+    <Compile Include="Commands\AddSubtaskCommand.cs" />
     <Compile Include="Commands\AddTaskCommand.cs" />
     <Compile Include="Commands\NotebookCommands\AddNotebookCommand.cs" />
     <Compile Include="Commands\NotebookCommands\AddNoteCommand.cs" />

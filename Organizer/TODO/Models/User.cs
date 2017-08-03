@@ -13,15 +13,37 @@ namespace TODO.Models
         private string password;
         private ICollection<INotebook> notebooks;
         private ICollection<ITask> tasks;
+        private ICollection<ILongTermTask> longTermTasks;
 
-        public User(string username, string password, ICollection<INotebook> notebooks = null, ICollection<ITask> tasks = null)
+        public User(string username, string password, ICollection<INotebook> notebooks = null, ICollection<ITask> tasks = null,
+            ICollection<ILongTermTask> longTermTasks=null)
         {
             this.Username = username;
             this.Password = password;
             this.Notebooks = notebooks;
             this.Tasks = tasks;
+            this.LongTermTasks = longTermTasks;
         }
+        public ICollection<ILongTermTask> LongTermTasks
+        {
+            get
+            {
+                return this.longTermTasks;
+            }
+            private set
+            {
+                if (value == null)
+                {
+                    this.longTermTasks = new List<ILongTermTask>();
+                }
+                else
+                {
+                    this.longTermTasks = value;
 
+                }
+            }
+        }
+       
         public ICollection<INotebook> Notebooks
         {
             get
@@ -94,7 +116,7 @@ namespace TODO.Models
 
         public void AddNotebook(INotebook notebook)
         {
-            this.notebooks.Add(notebook);
+            this.Notebooks.Add(notebook);
         }
         public void DeleteNotebook()
         {
@@ -106,7 +128,7 @@ namespace TODO.Models
         }
         public void Sort()
         {
-
+            throw new NotImplementedException();
         }
         public string FormatUserInfoForDB()
         {
@@ -114,7 +136,14 @@ namespace TODO.Models
                 $"{(this.Notebooks.Count == 0 ? string.Empty : Environment.NewLine + string.Join(Environment.NewLine, this.Notebooks.Select(x => x.FormatUserInfoForDB())))}"
                 + Environment.NewLine + "---***---"
                 + $"{(this.Tasks.Count == 0 ? string.Empty : Environment.NewLine + string.Join(Environment.NewLine, this.Tasks.Select(x => x.FormatUserInfoForDB())))}"
-                 + Environment.NewLine + "___***___" + Environment.NewLine;
+                 + Environment.NewLine + "___***___" + 
+                $"{(this.LongTermTasks.Count ==0 ?  string.Empty: Environment.NewLine + string.Join(Environment.NewLine, this.LongTermTasks))}"
+                +Environment.NewLine+"---***---"+Environment.NewLine;
+        }
+
+        public void AddLongTermTask(ILongTermTask longTermTask)
+        {
+            this.LongTermTasks.Add(longTermTask);
         }
     }
 }

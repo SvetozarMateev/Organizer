@@ -18,6 +18,9 @@ namespace TODO.Utils.GlobalConstants
         public const int MinUserLength = 3;
 
         public const string PathToDatabase = "../../../../Database";
+        public static readonly string[] Formats = new string[] {"dd.MM.yyyy.HH.mm", "HH.mm.dd.MM.yyyy",
+        "dd-MM-yyyy-HH-mm", "HH-mm-dd-MM-yyyy","dd/MM/yyyy/HH/mm", "HH/mm/dd/MM/yyyy",
+        "dd MM yyyy HH mm", "HH mm dd MM yyyy","dd|MM|yyyy|HH|mm", "HH|mm|dd|MM|yyyy"};
         #endregion
 
 

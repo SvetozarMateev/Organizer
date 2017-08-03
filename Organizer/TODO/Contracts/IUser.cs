@@ -9,8 +9,10 @@ namespace TODO.Contracts
         string Password { get; }
         ICollection<INotebook> Notebooks { get; }
         ICollection<ITask> Tasks { get; }
+        ICollection<ILongTermTask> LongTermTasks { get; }
 
         void AddNotebook(INotebook notebook);
+        void AddLongTermTask(ILongTermTask longTermTask);
         void DeleteNotebook();
         void AddTask(ITask task);
         void Sort();

@@ -82,11 +82,14 @@ namespace TODO
                 this.start = value;
             }
         }
-
-        public string FormatUserInfoForDB()
+        public virtual string AdditionalInformation()
+        {
+            return "";
+        }
+        public virtual string FormatUserInfoForDB()
         {
             return $"{this.Title} {this.Priority} {(this.Reminder.MomentsOfBeeping.Count == 0 ? "" : this.Reminder.ToString())}" +
-                $" {this.Start.ToString("dd/MM/yyyy")} {this.Description}";
+                $" {this.Start.ToString("dd/MM/yyyy")} {AdditionalInformation()}{this.Description}";
         }
     }
 }

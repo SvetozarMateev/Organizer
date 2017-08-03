@@ -3,35 +3,49 @@ using TODO.Contracts;
 
 namespace TODO.Models
 {
-    public class SubTask : Task, ITask, ISubTask
+    public class SubTask : Task, ITask, ISubTask,ISaveable
     {
-        public SubTask(string title, Priority priority, string description)
+       
+        private DateTime dueDate;
+        private double importancePercent;
+
+        public SubTask(string title, Priority priority, string description, DateTime dueDate, double importancePercent)
             : base(title, priority, description)
         {
+           
+            this.DueDate = dueDate;
+            this.ImportancePercent = importancePercent;
         }
 
-        public string Content
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+       
 
         public DateTime DueDate
         {
             get
             {
-                throw new NotImplementedException();
+                return this.dueDate;
             }
+            private set
+            {
+                this.dueDate = value;
+            }
+
         }
 
         public double ImportancePercent
         {
             get
             {
-                throw new NotImplementedException();
+                return this.importancePercent;
+            }
+            set
+            {
+                this.importancePercent = value;
             }
         }
+        public override string AdditionalInformation()
+        {
+            return $"{this.DueDate} {this.ImportancePercent} ";
+        }    
     }
 }

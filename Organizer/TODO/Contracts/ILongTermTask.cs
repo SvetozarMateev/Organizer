@@ -5,12 +5,12 @@ using TODO.Models;
 
 namespace TODO.Contracts
 {
-    interface ILongTermTask : ITask
+    public interface ILongTermTask : ITask
     {
-        ICollection<SubTask> AllTasks { get; }
+        ICollection<ISubTask> AllTasks { get; }
         DateTime End { get; }
         void CalculateDefaultPriorityOfAll();
-        void AddSubTask(SubTask subTask);
+        void AddSubTask(ISubTask subtask);
 
     }
 }

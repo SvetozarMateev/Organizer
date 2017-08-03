@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using TODO.Contracts;
 using TODO.Models;
+using TODO.Utils.GlobalConstants;
 
 namespace TODO.Factories
 {
@@ -16,7 +20,7 @@ namespace TODO.Factories
             return new Notebook(name);
         }
 
-        public ITask CreateTask(string title, string priority, string description)
+        public ITask CreateTask(string title, string priority, string description) 
         {
             Priority resultPriority;
             if (!Enum.TryParse(priority, true, out resultPriority))
@@ -30,6 +34,38 @@ namespace TODO.Factories
         public IUser CreateUser(string username, string password)
         {
             return new User(username, password);
+        }
+        public ILongTermTask CreateLongTermTask(string title, string priority, string description, string end)
+        {
+            Priority resultPriority;
+            if (!Enum.TryParse(priority, true, out resultPriority))
+            {
+                throw new ArgumentException("Wrong Priority");
+            }
+            
+            return new LongTermTask(title, resultPriority, description,
+                DateTime.ParseExact(end, Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None));
+        }
+
+        public ISubTask CreateSubTask(string title, string priority, string description, string content , string end, string importancePercent=null)
+        {
+            Priority finalPriority;
+            if (Enum.TryParse(priority, true, out finalPriority))
+            {
+                throw new ArgumentException("Wrong type of priority");
+            }
+          
+            DateTime dueDate = DateTime
+                .ParseExact(end, Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
+          
+            if (importancePercent!=null)
+            {
+                return new SubTask(title, finalPriority, description, dueDate,  double.Parse(importancePercent));
+            }
+            else
+            {
+                return new SubTask(title, finalPriority, description, dueDate,0);
+            }           
         }
     }
 }
