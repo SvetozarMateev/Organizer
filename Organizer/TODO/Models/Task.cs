@@ -31,6 +31,8 @@ namespace TODO
             }
             private set
             {
+                Validator.CannotBeNullOrEmpty(value);
+
                 this.title = value;
             }
         }
@@ -43,6 +45,8 @@ namespace TODO
             }
             private set
             {
+                Validator.CannotBeNullOrEmpty(value);
+
                 this.description = value;
             }
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using TODO.Contracts;
+using TODO.Utils.Validator;
 
 namespace TODO.Models
 {
@@ -27,6 +28,8 @@ namespace TODO.Models
             }
             private set
             {
+                Validator.CannotBeNullOrEmpty(value);
+
                 this.title = value;
             }
         }
@@ -39,6 +42,8 @@ namespace TODO.Models
             }
             set
             {
+                Validator.CannotBeNullOrEmpty(value);
+
                 this.content = value;
             }
         }

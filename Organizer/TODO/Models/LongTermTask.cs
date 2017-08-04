@@ -30,9 +30,9 @@ namespace TODO.Models
             }
             private set
             {
+                Validator.CollectionCannotBeNull(value);
 
                 this.allTasks = value;
-
             }
         }
 
@@ -44,6 +44,8 @@ namespace TODO.Models
             }
             private set
             {
+                Validator.CheckIfDateTimeIsNotNull(value);
+
                 this.end = value;
             }
         }
@@ -66,6 +68,7 @@ namespace TODO.Models
                 subtask.ImportancePercent = defaultPriority;
             }
         }
+
         public override string AdditionalInformation()
         {
             return string.Join(",", this.AllTasks)+" "+ End.ToString("dd/MM/yyyy/HH/mm") + " ";

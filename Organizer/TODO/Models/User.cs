@@ -24,26 +24,37 @@ namespace TODO.Models
             this.Tasks = tasks;
             this.LongTermTasks = longTermTasks;
         }
-        public ICollection<ILongTermTask> LongTermTasks
+
+        public string Username
         {
             get
             {
-                return this.longTermTasks;
+                return this.username;
             }
             private set
             {
-                if (value == null)
-                {
-                    this.longTermTasks = new List<ILongTermTask>();
-                }
-                else
-                {
-                    this.longTermTasks = value;
+                Validator.CannotBeNullOrEmpty(value);
+                Validator.CheckNameLength(value, Constants.MinUserLength);
+                Validator.CheckUserName(value);
 
-                }
+                this.username = value;
             }
         }
-       
+
+        public string Password
+        {
+            get
+            {
+                return this.password;
+            }
+            private set
+            {
+                Validator.CheckPasswordStrength(value);
+
+                this.password = value;
+            }
+        }
+
         public ICollection<INotebook> Notebooks
         {
             get
@@ -84,33 +95,23 @@ namespace TODO.Models
             }
         }
 
-        public string Password
+        public ICollection<ILongTermTask> LongTermTasks
         {
             get
             {
-                return this.password;
+                return this.longTermTasks;
             }
             private set
             {
-                Validator.CheckPasswordStrength(value);
+                if (value == null)
+                {
+                    this.longTermTasks = new List<ILongTermTask>();
+                }
+                else
+                {
+                    this.longTermTasks = value;
 
-                this.password = value;
-            }
-        }
-
-        public string Username
-        {
-            get
-            {
-                return this.username;
-            }
-            private set
-            {
-                Validator.CannotBeNullOrEmpty(value);
-                Validator.CheckNameLength(value, Constants.MinUserLength);
-                Validator.CheckUserName(value);
-
-                this.username = value;
+                }
             }
         }
 
@@ -118,18 +119,22 @@ namespace TODO.Models
         {
             this.Notebooks.Add(notebook);
         }
+
         public void DeleteNotebook()
         {
             throw new NotImplementedException();
         }
+
         public void AddTask(ITask task)
         {
             this.Tasks.Add(task);
         }
+
         public void Sort()
         {
             throw new NotImplementedException();
         }
+
         public string FormatUserInfoForDB()
         {
             return $"{this.Username} {this.Password}" +

@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
+using TODO.Contracts;
 using TODO.Models.Enums;
 using TODO.Utils.GlobalConstants;
 
@@ -79,7 +82,28 @@ namespace TODO.Utils.Validator
             }
 
         }
+        public static void ListCannotBeNullOrEmpty(IEnumerable<string> list)
+        {
+            if (list == null && !list.Any())
+            {
+                throw new ArgumentException(Constants.EmptyOrNullList);
+            }
+        }
+        public static void CollectionCannotBeNull(IEnumerable<ISubTask> list)
+        {
+            if (list == null && !list.Any())
+            {
+                throw new ArgumentException(Constants.EmptyOrNullList);
+            }
+        }
+        public static void CheckIfDateTimeIsNotNull(DateTime date)
+        {
+            if (date == DateTime.MinValue)
+            {
+                throw new ArgumentException("Date time is not assigned");
+            }
 
+        }
         #endregion
     }
 }

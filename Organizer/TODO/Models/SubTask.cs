@@ -16,15 +16,14 @@ namespace TODO.Models
             this.DueDate = dueDate;
             this.ImportancePercent = importancePercent;
         }
-
-       
-
+        
         public DateTime DueDate
         {
             get
             {
                 return this.dueDate;
             }
+
             private set
             {
                 this.dueDate = value;
@@ -43,6 +42,7 @@ namespace TODO.Models
                 this.importancePercent = value;
             }
         }
+
         public override string AdditionalInformation()
         {
             return $"{this.DueDate} {this.ImportancePercent} ";

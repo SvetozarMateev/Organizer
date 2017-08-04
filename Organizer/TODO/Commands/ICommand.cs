@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+
 namespace TODO.Engine
 {
-    interface ICommand
+    public interface ICommand
     {
         List<string> Parameters { get; }
 

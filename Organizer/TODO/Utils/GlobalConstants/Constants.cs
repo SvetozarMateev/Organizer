@@ -21,6 +21,9 @@ namespace TODO.Utils.GlobalConstants
         public static readonly string[] Formats = new string[] {"dd.MM.yyyy.HH.mm", "HH.mm.dd.MM.yyyy",
         "dd-MM-yyyy-HH-mm", "HH-mm-dd-MM-yyyy","dd/MM/yyyy/HH/mm", "HH/mm/dd/MM/yyyy",
         "dd MM yyyy HH mm", "HH mm dd MM yyyy","dd|MM|yyyy|HH|mm", "HH|mm|dd|MM|yyyy"};
+
+        public const string EmptyOrNullList = "List cannot be null or empty";
+        public const string EmptyCollection = "This collection is currently empty or null";
         #endregion
 
 

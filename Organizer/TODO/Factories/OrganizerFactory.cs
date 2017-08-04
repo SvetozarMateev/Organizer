@@ -20,7 +20,7 @@ namespace TODO.Factories
             return new Notebook(name);
         }
 
-        public ITask CreateTask(string title, string priority, string description) 
+        public ITask CreateTask(string title, string priority, string description)
         {
             Priority resultPriority;
             if (!Enum.TryParse(priority, true, out resultPriority))
@@ -42,30 +42,30 @@ namespace TODO.Factories
             {
                 throw new ArgumentException("Wrong Priority");
             }
-            
+
             return new LongTermTask(title, resultPriority, description,
                 DateTime.ParseExact(end, Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None));
         }
 
-        public ISubTask CreateSubTask(string title, string priority, string description, string content , string end, string importancePercent=null)
+        public ISubTask CreateSubTask(string title, string priority, string description, string content, string end, string importancePercent = null)
         {
             Priority finalPriority;
             if (Enum.TryParse(priority, true, out finalPriority))
             {
                 throw new ArgumentException("Wrong type of priority");
             }
-          
+
             DateTime dueDate = DateTime
                 .ParseExact(end, Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
-          
-            if (importancePercent!=null)
+
+            if (importancePercent != null)
             {
-                return new SubTask(title, finalPriority, description, dueDate,  double.Parse(importancePercent));
+                return new SubTask(title, finalPriority, description, dueDate, double.Parse(importancePercent));
             }
             else
             {
-                return new SubTask(title, finalPriority, description, dueDate,0);
-            }           
+                return new SubTask(title, finalPriority, description, dueDate, 0);
+            }
         }
     }
 }

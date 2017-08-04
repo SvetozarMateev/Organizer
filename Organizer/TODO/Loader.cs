@@ -106,7 +106,7 @@ namespace TODO
             DateTime dtDueDate= DateTime.ParseExact(refinedTaskParams[4], Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
             double importancePercent = double.Parse(refinedTaskParams[5]);
             string description = string.Join(" ", refinedTaskParams.Skip(6));
-            return new SubTask(title, priority, description, dtDueDate, importancePercent, dtStart,);
+            return new SubTask(title, priority, description, dtDueDate, importancePercent, dtStart);
         }
         private static ITask LoadTask(string entryParams)
         {

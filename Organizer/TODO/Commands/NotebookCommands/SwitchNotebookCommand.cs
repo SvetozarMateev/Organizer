@@ -15,10 +15,12 @@ namespace TODO.Commands
         public override string Execute()
         {
             string newNotebookName = base.Parameters[1];
+
             if (!SearchForNotebook(newNotebookName))
             {
                 return $"You don't have a notebook with this name";
             }
+
             return $"Successfully switched to {newNotebookName} notebook";
         }
 
@@ -32,6 +34,7 @@ namespace TODO.Commands
                     return true;
                 }
             }
+
             return false;
         }
     }

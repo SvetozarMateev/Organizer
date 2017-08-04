@@ -28,10 +28,10 @@ namespace TODO.Commands
                 {
                     EngineMaikaTI.currentNotebook = EngineMaikaTI.loggedUser.Notebooks.First();
                 }
-
-
+                
                 return "Successfully logged !" + " but not implemented yet";
             }
+
             return "Wrong Credentials";
         }
 
@@ -46,6 +46,7 @@ namespace TODO.Commands
                     return true;
                 }
             }
+
             return false;
         }
     }

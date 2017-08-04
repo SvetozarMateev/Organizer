@@ -10,6 +10,7 @@ namespace TODO.Engine
     {
         protected List<string> parameters;
         protected OrganizerFactory factory;
+
         public Command(List<string> parameters)
         {
             this.Parameters = parameters;
@@ -25,10 +26,8 @@ namespace TODO.Engine
 
             private set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("List of strings cannot be null.");
-                }
+                Validator.ListCannotBeNullOrEmpty(value);
+                
                 this.parameters = value;
             }
         }

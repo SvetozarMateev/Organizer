@@ -19,11 +19,25 @@ namespace TODO.Commands
         {
             ISubTask currSubtask;
             if (this.Parameters.Count == 6)
-                currSubtask=this.factory.CreateSubTask(this.Parameters[1], this.Parameters[2], this.Parameters[3], this.Parameters[4], this.Parameters[5],this.Parameters[6]);
+            {
+                currSubtask = this.factory.CreateSubTask(this.Parameters[1],
+                    this.Parameters[2],
+                    this.Parameters[3],
+                    this.Parameters[4],
+                    this.Parameters[5],
+                    this.Parameters[6]);
+            }
             else
-                currSubtask=this.factory.CreateSubTask(this.Parameters[1], this.Parameters[2], this.Parameters[3], this.Parameters[4],this.Parameters[5]);
+            {
+                currSubtask = this.factory.CreateSubTask(this.Parameters[1], 
+                    this.Parameters[2], 
+                    this.Parameters[3], 
+                    this.Parameters[4],
+                    this.Parameters[5]);
+            }
 
             EngineMaikaTI.currentLongTermTask.AddSubTask(currSubtask);
+
             return $"Sub task {this.Parameters[1]} added to {EngineMaikaTI.currentLongTermTask}";
         }
     }
