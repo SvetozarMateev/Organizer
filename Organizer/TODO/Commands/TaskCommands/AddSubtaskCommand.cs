@@ -19,8 +19,8 @@ namespace TODO.Commands
                     this.Parameters[2],
                     this.Parameters[3],
                     this.Parameters[4],
-                    this.Parameters[5],
-                    this.Parameters[6]);
+                    this.Parameters[5]
+                   );
             }
             else
             {

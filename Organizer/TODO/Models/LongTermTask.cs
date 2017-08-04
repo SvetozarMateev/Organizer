@@ -18,7 +18,6 @@ namespace TODO.Models
             this.AllTasks = allTasks;
         }
 
-
         public ICollection<ISubTask> AllTasks
         {
             get
@@ -75,6 +74,5 @@ namespace TODO.Models
         {
             return $":::{ string.Join(",", this.AllTasks)}::: {this.End.ToString("dd/MM/yyyy/HH/mm")}::: ";
         }
-
     }
 }
