@@ -33,6 +33,7 @@ namespace TODO.Factories
         {
             return new User(username, password);
         }
+
         public ILongTermTask CreateLongTermTask(string title, string priority,string end ,string description )
         {
             Priority resultPriority;
@@ -63,6 +64,11 @@ namespace TODO.Factories
             {
                 return new SubTask(title, finalPriority, description, dueDate, 0);
             }
+        }
+
+        public IReminder CreateReminder(string moment)
+        {
+            return new Reminder(moment);
         }
     }
 }

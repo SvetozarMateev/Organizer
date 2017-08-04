@@ -13,7 +13,7 @@ namespace TODO
         private IReminder reminder;
         private DateTime start;
 
-        public Task(string title, Priority priority, string description, DateTime start = default(DateTime), Reminder reminder=null)     
+        public Task(string title, Priority priority, string description, DateTime start = default(DateTime), Reminder reminder = null)
         {
             this.Title = title;
             this.Description = description;
@@ -68,17 +68,9 @@ namespace TODO
             {
                 return this.reminder;
             }
-            private set
+            set
             {
-                if (value == null)
-                {
-                    this.reminder = new Reminder();
-                }
-                else
-                {
-                    this.reminder = value;
-
-                }
+                this.reminder = value;
             }
         }
 

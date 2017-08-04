@@ -135,6 +135,10 @@ namespace TODO.Engine
                     command = new AddSubtaskCommand(commands);
                     commandResult = command.Execute();
                     break;
+                case "setremindertotask":
+                    command = new AddReminderToTaskCommand(commands);
+                    commandResult = command.Execute();
+                    break;
                 default:
                     break;
             }

@@ -8,7 +8,7 @@ namespace TODO.Contracts
         string Title { get; }
         string Description { get; }
         DateTime Start { get; }
-        IReminder Reminder { get; }
+        IReminder Reminder { get; set; }
         Priority Priority { get; }
 
         //void Sort();

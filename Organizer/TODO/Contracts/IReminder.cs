@@ -3,11 +3,9 @@ using System.Collections.Generic;
 
 namespace TODO.Contracts
 {
-    public interface IReminder
+    public interface IReminder : ISaveable
     {
-        ICollection<DateTime> MomentsOfBeeping { get; }
-        void AddMoment(DateTime moment);
-        void RemoveMoment(DateTime moment);
+        DateTime MomentToRemind { get; }
         void Remind();
     }
 }

@@ -1,4 +1,6 @@
-﻿using TODO.Contracts;
+﻿using System;
+using System.Collections.Generic;
+using TODO.Contracts;
 
 namespace TODO.Factories
 {
@@ -11,5 +13,12 @@ namespace TODO.Factories
         INote CreateNote(string title, string content);
 
         ITask CreateTask(string title, string description, string priority);
+
+        ILongTermTask CreateLongTermTask(string title, string priority, string end, string description);
+
+        ISubTask CreateSubTask(string title, string priority,
+            string description, string content, string end, string importancePercent = null);
+
+        IReminder CreateReminder(string moment);
     }
 }

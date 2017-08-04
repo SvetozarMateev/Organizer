@@ -4,30 +4,25 @@ using TODO.Contracts;
 
 namespace TODO.Models
 {
-    public class Reminder : IReminder
+    public class Reminder : IReminder, ISaveable
     {
-        private ICollection<DateTime> momentsOfBeeping;
+        private DateTime momentToRemind;
 
-        public Reminder()
+        public Reminder(DateTime momentToRemind)
         {
-            this.MomentsOfBeeping = new List<DateTime>();
+            this.MomentToRemind = momentToRemind;
         }
 
-        public ICollection<DateTime> MomentsOfBeeping
+        public DateTime MomentToRemind
         {
             get
             {
-                return this.momentsOfBeeping;
+                return this.momentToRemind;
             }
             private set
             {
-                this.momentsOfBeeping = value;
+                this.momentToRemind = value;
             }
-        }
-
-        public void AddMoment(DateTime moment)
-        {
-            throw new NotImplementedException();
         }
 
         public void Remind()
@@ -35,7 +30,7 @@ namespace TODO.Models
             throw new NotImplementedException();
         }
 
-        public void RemoveMoment(DateTime moment)
+        public string FormatUserInfoForDB()
         {
             throw new NotImplementedException();
         }

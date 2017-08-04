@@ -5,7 +5,6 @@ namespace TODO.Models
 {
     public class SubTask : Task, ITask, ISubTask,ISaveable
     {
-       
         private DateTime dueDate;
         private double importancePercent;
 
