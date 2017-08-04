@@ -39,6 +39,7 @@ namespace TODO
                         break;
                     currNotebooks.Add(LoadNotebook(attrLine));                 
                 }
+
                 List<ITask> currTasks = new List<ITask>();
                 while (true)
                 {
@@ -47,6 +48,7 @@ namespace TODO
                         break;
                     currTasks.Add(LoadTask(attrLine));
                 }
+
                 List<ILongTermTask> currLongTermTasks = new List<ILongTermTask>();
                 while (true)
                 {
