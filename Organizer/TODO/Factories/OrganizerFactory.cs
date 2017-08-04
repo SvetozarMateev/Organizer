@@ -33,7 +33,7 @@ namespace TODO.Factories
         {
             return new User(username, password);
         }
-        public ILongTermTask CreateLongTermTask(string title, string priority, string description, string end)
+        public ILongTermTask CreateLongTermTask(string title, string priority,string end ,string description )
         {
             Priority resultPriority;
             if (!Enum.TryParse(priority, true, out resultPriority))
@@ -41,8 +41,7 @@ namespace TODO.Factories
                 throw new ArgumentException("Wrong Priority");
             }
 
-            return new LongTermTask(title, resultPriority, description,
-                DateTime.ParseExact(end, Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None));
+            return new LongTermTask(title, resultPriority,DateTime.ParseExact(end, Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None), description);
         }
 
         public ISubTask CreateSubTask(string title, string priority, string description, string content, string end, string importancePercent = null)

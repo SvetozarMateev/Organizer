@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using TODO.Contracts;
 using TODO.Models;
 using TODO.Utils.GlobalConstants;
@@ -53,7 +55,7 @@ namespace TODO
                         break;
                     currLongTermTasks.Add(LoadLongTermTask(attrLine));
                 }
-                return new User(username, password, currNotebooks,currTasks);
+                return new User(username, password, currNotebooks,currTasks,currLongTermTasks);
             }
         }
 
@@ -119,17 +121,17 @@ namespace TODO
         }
         private static ILongTermTask LoadLongTermTask(string entryParams)
         {
-
-            string[] refinedTaskParams = entryParams.Split(' ').ToArray();
+            string[] initialSplit = entryParams.Split(new string[] { ":::" }, StringSplitOptions.RemoveEmptyEntries).ToArray();
+            string[] refinedTaskParams = initialSplit[0].Split(' ').ToArray();
             string title = refinedTaskParams[0];
             Priority priority;
             Enum.TryParse(refinedTaskParams[1], out priority);
             //TODO implement when reminder is not null
-            DateTime dtStart = DateTime.ParseExact(refinedTaskParams[3], Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
-            //TODO implement when subtasks are more than 0
-            DateTime dtEnd = DateTime.ParseExact(refinedTaskParams[4], Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
-            string description = string.Join(" ", refinedTaskParams.Skip(5));
-            return new LongTermTask(title, priority, description,dtEnd, dtStart);
+            DateTime dtStart = DateTime.ParseExact(refinedTaskParams[3], Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);          
+            List<ISubTask> currSubtasks = initialSplit[1].Split(',').Select(x => LoadSubTask(x)).ToList(); 
+            DateTime dtEnd = DateTime.ParseExact(initialSplit[2].Trim(), Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
+            string description = string.Join(" ", initialSplit[3]);
+            return new LongTermTask(title, priority,dtEnd,description,dtStart,currSubtasks);
         }
     }
 }

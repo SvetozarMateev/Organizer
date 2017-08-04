@@ -5,16 +5,17 @@ using TODO.Utils.Validator;
 
 namespace TODO.Models
 {
-    public class LongTermTask : Task, ITask, ILongTermTask,ISaveable
+    public class LongTermTask : Task, ITask, ILongTermTask, ISaveable
     {
         private ICollection<ISubTask> allTasks;
         private DateTime end;
 
-        public LongTermTask(string title, Priority priority, string description , DateTime end, DateTime start=default(DateTime)  )
-            : base(title, priority, description,start)
+        public LongTermTask(string title, Priority priority, DateTime end, string description,
+            DateTime start = default(DateTime), ICollection<ISubTask> alltasks = null)
+            : base(title, priority, description, start)
         {
             this.End = end;
-            this.AllTasks = new List<ISubTask>();
+            this.AllTasks = allTasks;
         }
 
 
@@ -26,9 +27,14 @@ namespace TODO.Models
             }
             private set
             {
-                Validator.CollectionCannotBeNull(value);
-
-                this.allTasks = value;
+                if (value == null)
+                {
+                    allTasks = new List<ISubTask>();
+                }
+                else
+                {
+                    this.allTasks = value;
+                }
             }
         }
 
@@ -48,7 +54,7 @@ namespace TODO.Models
 
         public void AddSubTask(ISubTask subtask)
         {
-            this.AllTasks.Add(subtask);            
+            this.AllTasks.Add(subtask);
         }
 
         public double CalcuLateDefaultPriorityOfOne()
@@ -67,8 +73,8 @@ namespace TODO.Models
 
         public override string AdditionalInformation()
         {
-            return string.Join(",", this.AllTasks)+" "+ End.ToString("dd/MM/yyyy/HH/mm") + " ";
+            return $":::{ string.Join(",", this.AllTasks)}::: {this.End.ToString("dd/MM/yyyy/HH/mm")}::: ";
         }
-        
+
     }
 }

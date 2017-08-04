@@ -142,7 +142,7 @@ namespace TODO.Models
                 + Environment.NewLine + "---***---"
                 + $"{(this.Tasks.Count == 0 ? string.Empty : Environment.NewLine + string.Join(Environment.NewLine, this.Tasks.Select(x => x.FormatUserInfoForDB())))}"
                  + Environment.NewLine + "___***___" + 
-                $"{(this.LongTermTasks.Count ==0 ?  string.Empty: Environment.NewLine + string.Join(Environment.NewLine, this.LongTermTasks))}"
+                $"{(this.LongTermTasks.Count ==0 ?  string.Empty: Environment.NewLine + string.Join(Environment.NewLine, this.LongTermTasks.Select(x=>x.FormatUserInfoForDB())))}"
                 +Environment.NewLine+"---***---"+Environment.NewLine;
         }
 
