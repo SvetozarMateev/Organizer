@@ -1,7 +1,6 @@
 ﻿using System;
 using TODO.Contracts;
 using TODO.Models;
-using TODO.Utils.GlobalConstants;
 using TODO.Utils.Validator;
 
 namespace TODO

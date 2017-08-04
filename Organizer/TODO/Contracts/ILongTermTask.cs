@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using TODO.Models;
-
 namespace TODO.Contracts
 {
     public interface ILongTermTask : ITask
