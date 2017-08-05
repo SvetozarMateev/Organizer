@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TODO.Engine;
 
@@ -8,15 +9,15 @@ namespace TODO.Commands
     {
         private List<string> usernamesAndPasswords = Loader.LoadUsernamesAndPasswords();
 
-        public LoginCommand(List<string> input)
-            : base(input)
+        public LoginCommand()
+            : base()
         {
         }
 
         public override string Execute()
         {
-            string username = base.Parameters[1];
-            string password = base.Parameters[2];
+            string username = base.Parameters[0];
+            string password = base.Parameters[1];
 
             if (CheckCredentials(username, password))
             {
@@ -32,6 +33,15 @@ namespace TODO.Commands
             }
 
             return "Wrong Credentials";
+        }
+
+        public override void TakeInput()
+        {
+            List<string> inputParameters = new List<string>();
+            inputParameters.Add(this.ReadOneLine("Username:"));
+            inputParameters.Add(this.ReadOneLine("Password:"));
+            this.Parameters = inputParameters;
+
         }
 
         private bool CheckCredentials(string inputUsername, string inputPassword)

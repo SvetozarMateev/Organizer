@@ -7,5 +7,6 @@ namespace TODO.Engine
         List<string> Parameters { get; }
 
         string Execute();
+        void TakeInput();
     }
 }

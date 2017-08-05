@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TODO.Engine;
 
 namespace TODO.Commands
 {
     public class SwitchNotebookCommand : Command, ICommand
     {
-        public SwitchNotebookCommand(List<string> parameters)
-            : base(parameters)
+        public SwitchNotebookCommand()
+            : base()
         {
         }
 
@@ -20,6 +21,11 @@ namespace TODO.Commands
             }
 
             return $"Successfully switched to {newNotebookName} notebook";
+        }
+
+        public override void TakeInput()
+        {
+            throw new NotImplementedException();
         }
 
         private bool SearchForNotebook(string newNotebookName)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TODO.Factories;
 using TODO.Utils.Validator;
 
@@ -9,9 +10,8 @@ namespace TODO.Engine
         protected List<string> parameters;
         protected OrganizerFactory factory;
 
-        public Command(List<string> parameters)
-        {
-            this.Parameters = parameters;
+        public Command()
+        {           
             this.factory = new OrganizerFactory();
         }
 
@@ -22,7 +22,7 @@ namespace TODO.Engine
                 return this.parameters;
             }
 
-            private set
+            protected set
             {
                 Validator.ListCannotBeNullOrEmpty(value);
                 
@@ -31,5 +31,12 @@ namespace TODO.Engine
         }
 
         public abstract string Execute();
+
+        public abstract void TakeInput();
+        protected virtual string ReadOneLine(string instruction)
+        {
+            Console.Write(instruction);
+            return Console.ReadLine();
+        }
     }
 }

@@ -8,8 +8,8 @@ namespace TODO.Commands
 {
     public class AddNoteCommand : Command, ICommand
     {
-        public AddNoteCommand(List<string> parameters)
-            : base(parameters)
+        public AddNoteCommand()
+            : base()
         {
 
         }
@@ -22,6 +22,11 @@ namespace TODO.Commands
             EngineMaikaTI.currentNotebook.AddNote(note);
 
             return $"Note {title} added successfully !";
+        }
+
+        public override void TakeInput()
+        {
+            throw new NotImplementedException();
         }
     }
 }

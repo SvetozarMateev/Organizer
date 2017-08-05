@@ -10,8 +10,8 @@ namespace TODO.Commands
 {
     class AddReminderToTaskCommand : Command, ICommand
     {
-        public AddReminderToTaskCommand(List<string> parameters)
-            : base(parameters)
+        public AddReminderToTaskCommand()
+            : base()
         {
         }
 
@@ -28,6 +28,11 @@ namespace TODO.Commands
             EngineMaikaTI.loggedUser.Tasks.Single(x => x.Title == taskName).Reminder = reminder;
 
             return $"Created reminder to task: {taskName} successfully !";
+        }
+
+        public override void TakeInput()
+        {
+            throw new NotImplementedException();
         }
 
         private bool SearchForTask(string taskName)

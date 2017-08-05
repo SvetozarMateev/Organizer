@@ -17,7 +17,7 @@ namespace TODO.Factories
         ILongTermTask CreateLongTermTask(string title, string priority, string end, string description);
 
         ISubTask CreateSubTask(string title, string priority,
-            string description, string content, string end, string importancePercent = null);
+            string description, string end, string importancePercent = null);
 
         IReminder CreateReminder(string moment);
     }

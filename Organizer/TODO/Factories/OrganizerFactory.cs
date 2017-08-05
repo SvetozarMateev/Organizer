@@ -45,7 +45,7 @@ namespace TODO.Factories
             return new LongTermTask(title, resultPriority,DateTime.ParseExact(end, Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None), description);
         }
 
-        public ISubTask CreateSubTask(string title, string priority, string description, string end, string importancePercent = null)
+        public ISubTask CreateSubTask(string title, string priority , string end, string description, string importancePercent = null)
         {
             Priority finalPriority;
             if (Enum.TryParse(priority, true, out finalPriority))
@@ -68,7 +68,8 @@ namespace TODO.Factories
 
         public IReminder CreateReminder(string moment)
         {
-            return new Reminder(moment);
+            //TODO return new Reminder(moment);
+            throw new NotImplementedException();
         }
     }
 }

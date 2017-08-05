@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TODO.Contracts;
 using TODO.Engine;
 
@@ -6,8 +7,8 @@ namespace TODO.Commands
 {
     public class AddNotebookCommand : Command, ICommand
     {
-        public AddNotebookCommand(List<string> parameters)
-            : base(parameters)
+        public AddNotebookCommand()
+            : base()
         {
         }
 
@@ -19,6 +20,11 @@ namespace TODO.Commands
             EngineMaikaTI.currentNotebook = notebook;
 
             return $"Notebook \"{notebookName}\" added successfully !";
+        }
+
+        public override void TakeInput()
+        {
+            throw new NotImplementedException();
         }
     }
 }

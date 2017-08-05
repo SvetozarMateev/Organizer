@@ -57,23 +57,25 @@ namespace TODO.Engine
                 case "register":
                 case "registeruser":
                     
-                    command = new RegisterCommand(commands);
+                    command = new RegisterCommand();
+                    command.TakeInput();
                     commandResult = command.Execute();
                     break;
                 case "login":
                 case "log":
                    
-                    command = new LoginCommand(commands);
+                    command = new LoginCommand();
+                    command.TakeInput();
                     commandResult = command.Execute();
                     break;
                 case "logout":
                    
-                    command = new LogOutCommand(commands);
+                    command = new LogOutCommand();
                     commandResult = command.Execute();
                     break;
                 case "addnotebook":
                   
-                    command = new AddNotebookCommand(commands);
+                    command = new AddNotebookCommand();
                     commandResult = command.Execute();
                     break;
                 case "addnote":                   
@@ -82,30 +84,31 @@ namespace TODO.Engine
                         throw new ArgumentException("You must create a notebook first");
                     }
 
-                    command = new AddNoteCommand(commands);
+                    command = new AddNoteCommand();
                     commandResult = command.Execute();
                     break;
                 case "switchnotebook":
-                    command = new SwitchNotebookCommand(commands);
+                    command = new SwitchNotebookCommand();
                     commandResult = command.Execute();
                     break;
                 case "addtask":
                    
-                    command = new AddTaskCommand(commands);
+                    command = new AddTaskCommand();
                     commandResult = command.Execute();
                     break;
                 case "addlongtermtask":
                     
-                    command = new AddLongTermTaskCommand(commands);
+                    command = new AddLongTermTaskCommand();
+                    command.TakeInput();
                     commandResult = command.Execute();
                     break;
                 case "addsubtask":
                     
-                    command = new AddSubtaskCommand(commands);
+                    command = new AddSubtaskCommand();
                     commandResult = command.Execute();
                     break;
                 case "setremindertotask":
-                    command = new AddReminderToTaskCommand(commands);
+                    command = new AddReminderToTaskCommand();
                     commandResult = command.Execute();
                     break;
                 default:

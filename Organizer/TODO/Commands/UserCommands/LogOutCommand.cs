@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TODO.Engine;
 
 namespace TODO.Commands
 {
     public class LogOutCommand : Command, ICommand
     {
-        public LogOutCommand(List<string> parameters)
-            : base(parameters)
+        public LogOutCommand()
+            : base()
         {
         }
 
@@ -14,6 +15,11 @@ namespace TODO.Commands
         {
             EngineMaikaTI.loggedUser = null;
             return $"Successfully logged Out";
+        }
+
+        public override void TakeInput()
+        {
+            throw new NotImplementedException();
         }
     }
 }

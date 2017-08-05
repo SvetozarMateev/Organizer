@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TODO.Contracts;
 using TODO.Engine;
@@ -7,8 +8,8 @@ namespace TODO.Commands
 {
     class AddTaskCommand : Command, ICommand
     {
-        public AddTaskCommand(List<string> parameters)
-            : base(parameters)
+        public AddTaskCommand()
+            : base()
         {
         }
 
@@ -22,6 +23,11 @@ namespace TODO.Commands
             EngineMaikaTI.loggedUser.AddTask(task);
 
             return $"Added tast {title} successfully !";
+        }
+
+        public override void TakeInput()
+        {
+            throw new NotImplementedException();
         }
     }
 }
