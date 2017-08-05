@@ -30,8 +30,22 @@ namespace TODO.Commands
             List<string> inputParameters = new List<string>();
             inputParameters.Add(this.ReadOneLine("Title: "));
             inputParameters.Add(this.ReadOneLine("Priority: "));
-            inputParameters.Add(this.ReadOneLine("Description: "));
+            string description=this.ReadOneLine("Description: ");
+
+            description = CheckIfThereWasLostDescription(description);
+            inputParameters.Add(description);
+
+            EngineMaikaTI.lastDescription = description;
             this.Parameters = inputParameters;
+        }
+
+        private string CheckIfThereWasLostDescription(string description)
+        {
+            if (description == "last" && EngineMaikaTI.lastDescription != null)
+            {
+                return EngineMaikaTI.lastDescription;
+            }
+            return description;
         }
     }
 }

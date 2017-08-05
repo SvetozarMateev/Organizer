@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TODO.Contracts;
 using TODO.Models;
 using TODO.Utils.GlobalConstants;
@@ -60,44 +58,33 @@ namespace TODO
             }
         }
 
-        public static INotebook LoadNotebook(string entryParameters)
+        public static INotebook LoadNotebook(string notebookParametersString)
         {
-            string[] refinedParameteres = entryParameters
+            string[] notebookParameters = notebookParametersString
                 .Split(new string[] { ":::" }, StringSplitOptions.RemoveEmptyEntries)
                 .ToArray();
 
-            string[] notebookParams = refinedParameteres[0]
-                .Split(' ')
-                .ToArray();
-
-            var noteParams = new List<string>();
-            if (refinedParameteres.Length > 1)
-            {
-                 noteParams = refinedParameteres[1]
-                .Split(new string[] { ",,," }, StringSplitOptions.RemoveEmptyEntries)
-                .ToList();
-            }
-            
+            string title = notebookParameters[0];
+            bool refinednotebookParam = notebookParameters[1] == "True";
             List<INote> currNotes = new List<INote>();
-            for (int i = 0; i < noteParams.Count; i++)
-            {
-                currNotes.Add(LoadNote(noteParams[i]));
-            }
 
-            bool refinednotebookParam = notebookParams[1] == "True";
-            return new Notebook(notebookParams[0], refinednotebookParam, currNotes);
+            if (notebookParameters[2] != "None")
+            {
+                currNotes = notebookParameters[2].Split(new string[] { ",,," }, StringSplitOptions.RemoveEmptyEntries).Select(x => LoadNote(x)).ToList();
+            }     
+
+            return new Notebook(title, refinednotebookParam, currNotes);
         }
 
-        private static INote LoadNote(string noteParams)
-        {
-           
-            string[] refinedNoteParams = noteParams.Split(' ');
+        private static INote LoadNote(string noteParameteresString)
+        {         
+            string[] noteParameters = noteParameteresString.Split(new string[] { "***" },StringSplitOptions.RemoveEmptyEntries).ToArray();
+            string title = noteParameters[0];
+            bool refinednoteParam = noteParameters[1] == "True";
+            var dt = DateTime.ParseExact(noteParameters[2], Constants.Formats, CultureInfo.InvariantCulture,DateTimeStyles.None);
+            var content = noteParameters[3];
 
-            bool refinednoteParam = refinedNoteParams[1] == "True";
-            var dt = DateTime.ParseExact(refinedNoteParams[2], "dd.MM.yyyy", CultureInfo.InvariantCulture);
-            var content = string.Join(" ",refinedNoteParams.Skip(3));
-
-            return new Note(refinedNoteParams[0], content, refinednoteParam, dt);
+            return new Note(title, content, refinednoteParam, dt);
         }
         private static ISubTask LoadSubTask(string subTaskParametersString)
         {

@@ -100,7 +100,7 @@ namespace TODO.Models
 
         public string FormatUserInfoForDB()
         {
-            return $"{this.Name} {this.IsFavourite}:::{string.Join(",,,", this.Notes.Select(x=>x.FormatUserInfoForDB()))}";
+            return $"{this.Name}:::{this.IsFavourite}:::{(this.Notes.Count==0?"None":string.Join(",,,", this.Notes.Select(x=>x.FormatUserInfoForDB())))}";
         }
     }
 }

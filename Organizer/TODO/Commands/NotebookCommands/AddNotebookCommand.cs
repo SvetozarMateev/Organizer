@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TODO.Contracts;
 using TODO.Engine;
+using TODO.Utils.GlobalConstants;
 
 namespace TODO.Commands
 {
@@ -19,7 +20,7 @@ namespace TODO.Commands
             EngineMaikaTI.loggedUser.AddNotebook(notebook);
             EngineMaikaTI.currentNotebook = notebook;
 
-            return $"Notebook \"{notebookName}\" added successfully !";
+            return Messages.NotebookCreated(notebookName);
         }
 
         public override void TakeInput()

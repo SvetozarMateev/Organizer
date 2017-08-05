@@ -81,7 +81,7 @@ namespace TODO.Models
        
         public string FormatUserInfoForDB()
         {
-            return $"{this.Title} {this.IsFavourite} {this.DateOfCreation.ToString("dd/MM/yyyy")} {this.Content} ";
+            return $"{this.Title}***{this.IsFavourite}***{this.DateOfCreation.ToString("dd/MM/yyyy")}***{this.Content}";
         }
     }
 }

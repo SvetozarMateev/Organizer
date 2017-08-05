@@ -82,6 +82,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Utils\GlobalConstants\Constants.cs" />
+    <Compile Include="Utils\GlobalConstants\Messages.cs" />
     <Compile Include="Utils\Validator\Validator.cs" />
     <Compile Include="Writer.cs" />
   </ItemGroup>

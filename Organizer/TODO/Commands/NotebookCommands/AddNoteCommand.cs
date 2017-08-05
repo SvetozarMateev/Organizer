@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TODO.Contracts;
 using TODO.Engine;
+using TODO.Utils.GlobalConstants;
 
 namespace TODO.Commands
 {
@@ -21,14 +22,28 @@ namespace TODO.Commands
             INote note = this.factory.CreateNote(title,content);
             EngineMaikaTI.currentNotebook.AddNote(note);
 
-            return $"Note {title} added successfully !";
+            return Messages.NoteCreated(title);
         }
 
         public override void TakeInput()
         {
             List<string> inputParameters = new List<string>();
             inputParameters.Add(this.ReadOneLine("Title: "));
-            inputParameters.Add(this.ReadOneLine("Content: "));
+            
+            string content = this.ReadOneLine("Content: ");
+            content = CheckIfThereWasLostDescription(content);
+            inputParameters.Add(content);
+            EngineMaikaTI.lastDescription = content;
+            this.Parameters = inputParameters;
+        }
+
+        private string CheckIfThereWasLostDescription(string description)
+        {
+            if (description == "last" && EngineMaikaTI.lastDescription != null)
+            {
+                return EngineMaikaTI.lastDescription;
+            }
+            return description;
         }
     }
 }
