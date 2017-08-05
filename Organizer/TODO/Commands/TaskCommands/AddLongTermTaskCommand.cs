@@ -13,16 +13,17 @@ namespace TODO.Commands
 
         public override string Execute()
         {
-            ILongTermTask longTermTask;
-            longTermTask = base.factory.CreateLongTermTask(this.Parameters[0],
-                this.Parameters[1],
-                this.Parameters[2],
-                this.Parameters[3]);
+            string title = this.Parameters[0];
+            string priority = this.Parameters[1];
+            string end = this.Parameters[2];
+            string description = this.Parameters[3];
 
+            ILongTermTask longTermTask= base.factory.CreateLongTermTask(title,priority,end,description);
+            
             EngineMaikaTI.currentLongTermTask = longTermTask;
             EngineMaikaTI.loggedUser.AddLongTermTask(longTermTask);
 
-            return $"Long term task {this.Parameters[1]} has been added";
+            return $"Long term task {title} has been added";
         }
 
         public override void TakeInput()
@@ -31,13 +32,22 @@ namespace TODO.Commands
             inputParameters.Add(this.ReadOneLine("Title:"));
             inputParameters.Add(this.ReadOneLine("Priority:"));
             inputParameters.Add(this.ReadOneLine("End Date:"));
-            inputParameters.Add(this.ReadOneLine("Description:"));
-            this.Parameters = inputParameters;           
+            string description = this.ReadOneLine("Description:");
+
+            description = CheckIfThereWasLostDescription(description);
+            inputParameters.Add(description);
+
+            EngineMaikaTI.lastDescription = description;
+            this.Parameters = inputParameters;
         }
-        private string ReadOneLine(string instruction)
-        {           
-            Console.Write(instruction);
-            return Console.ReadLine();
+
+        private string CheckIfThereWasLostDescription(string description)
+        {
+            if (description == "last" && EngineMaikaTI.lastDescription != null)
+            {
+                return EngineMaikaTI.lastDescription;
+            }
+            return description;
         }
     }
 }

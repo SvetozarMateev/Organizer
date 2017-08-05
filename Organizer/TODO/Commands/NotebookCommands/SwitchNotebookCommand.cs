@@ -13,7 +13,7 @@ namespace TODO.Commands
 
         public override string Execute()
         {
-            string newNotebookName = base.Parameters[1];
+            string newNotebookName = base.Parameters[0];
 
             if (!SearchForNotebook(newNotebookName))
             {
@@ -25,7 +25,9 @@ namespace TODO.Commands
 
         public override void TakeInput()
         {
-            throw new NotImplementedException();
+            List<string> inputParameters = new List<string>();
+            inputParameters.Add(this.ReadOneLine("Notebook name: "));
+            this.Parameters = inputParameters;
         }
 
         private bool SearchForNotebook(string newNotebookName)

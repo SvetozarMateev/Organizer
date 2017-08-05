@@ -15,9 +15,9 @@ namespace TODO.Commands
 
         public override string Execute()
         {
-            string title = base.Parameters[1];
-            string priorityStr = Parameters[2];
-            string description = string.Join(" ", base.Parameters.Skip(3));
+            string title = this.Parameters[0];
+            string priorityStr = this.Parameters[1];
+            string description = this.Parameters[2];
 
             ITask task = this.factory.CreateTask(title, priorityStr, description);
             EngineMaikaTI.loggedUser.AddTask(task);
@@ -27,7 +27,11 @@ namespace TODO.Commands
 
         public override void TakeInput()
         {
-            throw new NotImplementedException();
+            List<string> inputParameters = new List<string>();
+            inputParameters.Add(this.ReadOneLine("Title: "));
+            inputParameters.Add(this.ReadOneLine("Priority: "));
+            inputParameters.Add(this.ReadOneLine("Description: "));
+            this.Parameters = inputParameters;
         }
     }
 }

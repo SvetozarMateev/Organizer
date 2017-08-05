@@ -34,7 +34,7 @@ namespace TODO.Factories
             return new User(username, password);
         }
 
-        public ILongTermTask CreateLongTermTask(string title, string priority,string end ,string description )
+        public ILongTermTask CreateLongTermTask(string title, string priority, string end, string description)
         {
             Priority resultPriority;
             if (!Enum.TryParse(priority, true, out resultPriority))
@@ -42,10 +42,10 @@ namespace TODO.Factories
                 throw new ArgumentException("Wrong Priority");
             }
 
-            return new LongTermTask(title, resultPriority,DateTime.ParseExact(end, Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None), description);
+            return new LongTermTask(title, resultPriority, DateTime.ParseExact(end, Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None), description);
         }
 
-        public ISubTask CreateSubTask(string title, string priority , string end, string description, string importancePercent = null)
+        public ISubTask CreateSubTask(string title, string priority, string end, string description, string importancePercent)
         {
             Priority finalPriority;
             if (Enum.TryParse(priority, true, out finalPriority))
@@ -56,14 +56,7 @@ namespace TODO.Factories
             DateTime dueDate = DateTime
                 .ParseExact(end, Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
 
-            if (importancePercent != null)
-            {
-                return new SubTask(title, finalPriority, description, dueDate, double.Parse(importancePercent));
-            }
-            else
-            {
-                return new SubTask(title, finalPriority, description, dueDate, 0);
-            }
+            return new SubTask(title, finalPriority, description, dueDate, double.Parse(importancePercent));
         }
 
         public IReminder CreateReminder(string moment)

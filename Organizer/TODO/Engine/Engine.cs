@@ -13,6 +13,7 @@ namespace TODO.Engine
         public static IUser loggedUser;
         public static INotebook currentNotebook;
         public static ILongTermTask currentLongTermTask;
+        public static string lastDescription;
 
         public void Start()
         {
@@ -71,11 +72,15 @@ namespace TODO.Engine
                 case "logout":
                    
                     command = new LogOutCommand();
+                    command.TakeInput();
+
                     commandResult = command.Execute();
                     break;
                 case "addnotebook":
                   
                     command = new AddNotebookCommand();
+                    command.TakeInput();
+
                     commandResult = command.Execute();
                     break;
                 case "addnote":                   
@@ -85,15 +90,21 @@ namespace TODO.Engine
                     }
 
                     command = new AddNoteCommand();
+                    command.TakeInput();
+
                     commandResult = command.Execute();
                     break;
                 case "switchnotebook":
                     command = new SwitchNotebookCommand();
+                    command.TakeInput();
+
                     commandResult = command.Execute();
                     break;
                 case "addtask":
                    
                     command = new AddTaskCommand();
+                    command.TakeInput();
+
                     commandResult = command.Execute();
                     break;
                 case "addlongtermtask":
@@ -105,10 +116,14 @@ namespace TODO.Engine
                 case "addsubtask":
                     
                     command = new AddSubtaskCommand();
+                    command.TakeInput();
+
                     commandResult = command.Execute();
                     break;
                 case "setremindertotask":
                     command = new AddReminderToTaskCommand();
+                    command.TakeInput();
+
                     commandResult = command.Execute();
                     break;
                 default:

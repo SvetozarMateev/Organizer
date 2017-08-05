@@ -44,7 +44,7 @@ namespace TODO.Models
 
         public override string AdditionalInformation()
         {
-            return $"{this.DueDate} {this.ImportancePercent} ";
+            return $"{this.DueDate}:::{this.ImportancePercent}";
         }    
     }
 }

@@ -99,8 +99,8 @@ namespace TODO
         }
         public virtual string FormatUserInfoForDB()
         {
-            return $"{this.Title} {this.Priority} {(this.Reminder==null ? "None" : this.Reminder.ToString())}" +
-                $" {this.Start.ToString("dd/MM/yyyy")} {AdditionalInformation()}{this.Description}";
+            return $"{this.Title}:::{this.Priority}:::{(this.Reminder==null ? "None" : this.Reminder.ToString())}" +
+                $":::{this.Start.ToString("dd/MM/yyyy")}:::{AdditionalInformation()}:::{this.Description}";
         }
     }
 }

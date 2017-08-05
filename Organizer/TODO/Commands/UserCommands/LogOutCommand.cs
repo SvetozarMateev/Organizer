@@ -18,8 +18,7 @@ namespace TODO.Commands
         }
 
         public override void TakeInput()
-        {
-            throw new NotImplementedException();
+        {           
         }
     }
 }

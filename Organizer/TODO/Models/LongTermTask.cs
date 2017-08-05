@@ -72,7 +72,7 @@ namespace TODO.Models
 
         public override string AdditionalInformation()
         {
-            return $":::{ string.Join(",", this.AllTasks)}::: {this.End.ToString("dd/MM/yyyy/HH/mm")}::: ";
+            return $"{ string.Join(",", this.AllTasks)}:::{this.End.ToString("dd/MM/yyyy/HH/mm")}";
         }
     }
 }

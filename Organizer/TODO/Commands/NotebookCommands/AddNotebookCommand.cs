@@ -14,7 +14,7 @@ namespace TODO.Commands
 
         public override string Execute()
         {
-            string notebookName = base.Parameters[1];
+            string notebookName = base.Parameters[0];
             INotebook notebook = base.factory.CreateNotebook(notebookName);
             EngineMaikaTI.loggedUser.AddNotebook(notebook);
             EngineMaikaTI.currentNotebook = notebook;
@@ -24,7 +24,9 @@ namespace TODO.Commands
 
         public override void TakeInput()
         {
-            throw new NotImplementedException();
+            List<string> inputParameters = new List<string>();
+            inputParameters.Add(this.ReadOneLine("Notebook name: "));
+            this.Parameters = inputParameters;
         }
     }
 }

@@ -25,8 +25,8 @@ namespace TODO.Commands
         public override void TakeInput()
         {
             List<string> inputParameters = new List<string>();
-            inputParameters.Add(this.ReadOneLine("Username:"));
-            inputParameters.Add(this.ReadOneLine("Password:"));
+            inputParameters.Add(this.ReadOneLine("Username: "));
+            inputParameters.Add(this.ReadOneLine("Password: "));
             this.Parameters = inputParameters;
         }
     }

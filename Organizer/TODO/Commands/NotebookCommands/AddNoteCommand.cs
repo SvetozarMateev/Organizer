@@ -16,9 +16,9 @@ namespace TODO.Commands
 
         public override string Execute()
         {
-            string title = base.Parameters[1];
-            List<string> content = base.Parameters.Skip(2).ToList();
-            INote note = this.factory.CreateNote(title, String.Join(" ", content));
+            string title = base.Parameters[0];
+            string content = base.Parameters[1];
+            INote note = this.factory.CreateNote(title,content);
             EngineMaikaTI.currentNotebook.AddNote(note);
 
             return $"Note {title} added successfully !";
@@ -26,7 +26,9 @@ namespace TODO.Commands
 
         public override void TakeInput()
         {
-            throw new NotImplementedException();
+            List<string> inputParameters = new List<string>();
+            inputParameters.Add(this.ReadOneLine("Title: "));
+            inputParameters.Add(this.ReadOneLine("Content: "));
         }
     }
 }

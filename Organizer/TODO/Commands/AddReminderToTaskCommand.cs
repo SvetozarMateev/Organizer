@@ -17,8 +17,8 @@ namespace TODO.Commands
 
         public override string Execute()
         {
-            string taskName = base.Parameters[1];
-            string momentToRemind = base.Parameters[2];
+            string taskName = base.Parameters[0];
+            string momentToRemind = base.Parameters[1];
 
             IReminder reminder = this.factory.CreateReminder(momentToRemind);
             if (!SearchForTask(taskName))
@@ -32,7 +32,10 @@ namespace TODO.Commands
 
         public override void TakeInput()
         {
-            throw new NotImplementedException();
+            List<string> inputParameters = new List<string>();
+            inputParameters.Add(this.ReadOneLine("Task name: "));
+            inputParameters.Add(this.ReadOneLine("When to remind: "));
+            this.Parameters = inputParameters;
         }
 
         private bool SearchForTask(string taskName)
