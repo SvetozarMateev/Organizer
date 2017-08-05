@@ -48,7 +48,7 @@ namespace TODO.Factories
         public ISubTask CreateSubTask(string title, string priority, string end, string description, string importancePercent)
         {
             Priority finalPriority;
-            if (Enum.TryParse(priority, true, out finalPriority))
+            if (!Enum.TryParse(priority, true, out finalPriority))
             {
                 throw new ArgumentException("Wrong type of priority");
             }

@@ -134,14 +134,22 @@ namespace TODO
             
             string title = longTermTaskParameters[0];
 
-            Priority priority;
-            Enum.TryParse(longTermTaskParameters[1], out priority);
+            Priority priority = (Priority)Enum.Parse(typeof(Priority),longTermTaskParameters[1]);
 
+            List<ISubTask> currSubtasks;
+            if (longTermTaskParameters[2] == "None")
+            {
+                currSubtasks = new List<ISubTask>();
+            }
+            else
+            {
+             currSubtasks= longTermTaskParameters[2].Split(',').Select(x => LoadSubTask(x)).ToList();
+            }
+            DateTime dtStart = DateTime.ParseExact(longTermTaskParameters[3], Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
             //TODO implement when reminder is not null
-            DateTime dtStart = DateTime.ParseExact(longTermTaskParameters[2], Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
-            List<ISubTask> currSubtasks = longTermTaskParameters[3].Split(',').Select(x => LoadSubTask(x)).ToList(); ;
-            DateTime dtEnd = DateTime.ParseExact(longTermTaskParameters[4].Trim(), Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
-            string description = longTermTaskParameters[5];
+
+            DateTime dtEnd = DateTime.ParseExact(longTermTaskParameters[5].Trim(), Constants.Formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
+            string description = longTermTaskParameters[6];
                       
             return new LongTermTask(title, priority,dtEnd,description,dtStart,currSubtasks);
         }

@@ -24,7 +24,7 @@ namespace TODO.Commands
             
             EngineMaikaTI.currentLongTermTask.AddSubTask(currSubtask);
 
-            return $"Sub task {title} added to {EngineMaikaTI.currentLongTermTask}";
+            return $"Sub task {title} added to {EngineMaikaTI.currentLongTermTask.Title}";
         }
 
         public override void TakeInput()
