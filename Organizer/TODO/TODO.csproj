@@ -66,6 +66,11 @@
     <Compile Include="Engine\Engine.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Engine\IEngine.cs" />
+    <Compile Include="Exceptions\CannotBeNullException.cs" />
+    <Compile Include="Exceptions\InvalidPasswordException.cs" />
+    <Compile Include="Exceptions\InvalidPriorityException.cs" />
+    <Compile Include="Exceptions\InvalidUsernameException.cs" />
+    <Compile Include="Exceptions\WrongCredentialsException.cs" />
     <Compile Include="Factories\IOrganizerFactory.cs" />
     <Compile Include="Factories\OrganizerFactory.cs" />
     <Compile Include="Loader.cs" />
