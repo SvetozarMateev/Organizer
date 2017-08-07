@@ -7,7 +7,7 @@ namespace TODO.Contracts
     {
         ICollection<INote> Notes { get; }
        // IUser User { get; }
-        bool IsFavourite { get; }
+        bool IsFavourite { get; set; }
         string Name { get; }
 
         void AddNote(INote note);

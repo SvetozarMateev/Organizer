@@ -93,6 +93,9 @@ namespace TODO.Engine
                 case "addnotetofavourites":
                     command = new AddNoteToFavouritesCommand();
                     break;
+                case "addnotebooktofavourites":
+                    command = new AddNotebookToFavouritesCommand();
+                    break;
                 default:
                     break;
             }
