@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using TODO.Contracts;
+using TODO.Exceptions;
 using TODO.Models.Enums;
 using TODO.Utils.GlobalConstants;
 
@@ -17,14 +18,14 @@ namespace TODO.Utils.Validator
 
             if (!rgx.IsMatch(input))
             {
-                throw new ArgumentException($"{input} is not a valid name. Use only letters, numbers and underscore.");
+                throw new InvalidUsernameException($"{input} is not a valid name. Use only letters, numbers and underscore.");
             }
         }
         public static void CannotBeNullOrEmpty(string input)
         {
             if (string.IsNullOrEmpty(input))
             {
-                throw new ArgumentException("Input cannot be null or empty.");
+                throw new CannotBeNullException("Input cannot be null or empty.");
             }
         }
         public static void CheckNameLength(string input, int min)
@@ -71,7 +72,7 @@ namespace TODO.Utils.Validator
                 case PasswordStrength.VeryWeak:
                 case PasswordStrength.Weak:
                     {
-                        throw new ArgumentException($"{(PasswordStrength)score} password is not allowed, please try again.");
+                        throw new InvalidPasswordException($"{(PasswordStrength)score} password is not allowed, please try again.");
 
                     }
                 case PasswordStrength.Medium:
@@ -86,21 +87,21 @@ namespace TODO.Utils.Validator
         {
             if (list == null && !list.Any())
             {
-                throw new ArgumentException(Constants.EmptyOrNullList);
+                throw new CannotBeNullException(Constants.EmptyOrNullList);
             }
         }
         public static void CollectionCannotBeNull(IEnumerable<ISubTask> list)
         {
             if (list == null && !list.Any())
             {
-                throw new ArgumentException(Constants.EmptyOrNullList);
+                throw new CannotBeNullException(Constants.EmptyOrNullList);
             }
         }
         public static void CheckIfDateTimeIsNotNull(DateTime date)
         {
             if (date == DateTime.MinValue)
             {
-                throw new ArgumentException("Date time is not assigned");
+                throw new CannotBeNullException("Date time is not assigned");
             }
 
         }
