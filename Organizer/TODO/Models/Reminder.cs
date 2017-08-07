@@ -28,7 +28,6 @@ namespace TODO.Models
 
         public void Remind()
         {
-            Timer timer = new Timer();
         }
 
         public string FormatUserInfoForDB()

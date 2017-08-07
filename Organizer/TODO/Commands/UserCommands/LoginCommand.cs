@@ -21,17 +21,7 @@ namespace TODO.Commands
 
             if (CheckCredentials(username, password))
             {
-                
-                EngineMaikaTI.loggedUser = Loader.LoadUser(username, password);
-               
-                if (EngineMaikaTI.loggedUser.Notebooks.Count > 0)
-                {
-                    EngineMaikaTI.currentNotebook = EngineMaikaTI.loggedUser.Notebooks.First();
-                }
-                if (EngineMaikaTI.loggedUser.LongTermTasks.Count>0)
-                {
-                    EngineMaikaTI.currentLongTermTask = EngineMaikaTI.loggedUser.LongTermTasks.First();
-                }
+                SetCurrentParameters(username,password);
                
                 return "Successfully logged !";
             }
@@ -45,7 +35,6 @@ namespace TODO.Commands
             inputParameters.Add(this.ReadOneLine("Username: "));
             inputParameters.Add(this.ReadOneLine("Password: "));
             this.Parameters = inputParameters;
-
         }
 
         private bool CheckCredentials(string inputUsername, string inputPassword)
@@ -59,8 +48,21 @@ namespace TODO.Commands
                     return true;
                 }
             }
-
             return false;
+        }
+
+        private void SetCurrentParameters(string username, string password)
+        {
+            EngineMaikaTI.loggedUser = Loader.LoadUser(username, password);
+
+            if (EngineMaikaTI.loggedUser.Notebooks.Count > 0)
+            {
+                EngineMaikaTI.currentNotebook = EngineMaikaTI.loggedUser.Notebooks.First();
+            }
+            if (EngineMaikaTI.loggedUser.LongTermTasks.Count > 0)
+            {
+                EngineMaikaTI.currentLongTermTask = EngineMaikaTI.loggedUser.LongTermTasks.First();
+            }
         }
     }
 }

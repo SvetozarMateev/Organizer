@@ -52,7 +52,7 @@ namespace TODO.Engine
             ICommand command = null;
             string commandResult = String.Empty;
 
-            switch (commandType)
+            switch (commandType )
             {
                 case "register":
                 case "registeruser":

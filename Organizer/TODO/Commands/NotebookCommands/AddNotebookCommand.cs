@@ -15,9 +15,6 @@ namespace TODO.Commands
 
         public override string Execute()
         {
-
-
-
             string notebookName = base.Parameters[0];
             INotebook notebook = base.factory.CreateNotebook(notebookName);
             EngineMaikaTI.loggedUser.AddNotebook(notebook);
