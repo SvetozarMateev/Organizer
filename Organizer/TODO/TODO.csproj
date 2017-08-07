@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\NotebookCommands\AddNoteToFavouritesCommand.cs" />
     <Compile Include="Commands\AddReminderToTaskCommand.cs" />
     <Compile Include="Commands\TaskCommands\AddLongTermTaskCommand.cs" />
     <Compile Include="Commands\TaskCommands\AddSubtaskCommand.cs" />

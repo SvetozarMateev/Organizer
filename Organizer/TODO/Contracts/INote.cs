@@ -7,6 +7,8 @@ namespace TODO.Contracts
         string Title { get; }
         string Content { get; }
         DateTime DateOfCreation { get; }
-        bool IsFavourite { get; }
+        bool IsFavourite { get; set; }
+
+
     }
 }

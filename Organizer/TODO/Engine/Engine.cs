@@ -90,6 +90,9 @@ namespace TODO.Engine
                 case "setremindertotask":
                     command = new AddReminderToTaskCommand();
                     break;
+                case "addnotetofavourites":
+                    command = new AddNoteToFavouritesCommand();
+                    break;
                 default:
                     break;
             }
