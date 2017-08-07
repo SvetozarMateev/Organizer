@@ -16,8 +16,20 @@ namespace TODO.Commands
             string notebookTitle = base.Parameters[0];
             string noteName = base.Parameters[1];
 
-            EngineMaikaTI.loggedUser.Notebooks.First(x => x.Name == notebookTitle)
-                .Notes.First(n => n.Title == noteName).IsFavourite = true;
+            if (EngineMaikaTI.loggedUser.Notebooks.Any(x => x.Name == notebookTitle))
+            {
+                if (EngineMaikaTI.loggedUser.Notebooks
+                    .First(n => n.Name == notebookTitle).Notes.Any(note => note.Title == noteName))
+                {
+                    EngineMaikaTI.loggedUser.Notebooks
+                        .First(x => x.Name == notebookTitle).Notes
+                        .First(n => n.Title == noteName).IsFavourite = true;
+                }
+                else
+                    return $"Wrong Note Title !";
+            }
+            else
+                return $"Wrong Notebook Name !";
 
             return $"Successfully added to favourites";
 
