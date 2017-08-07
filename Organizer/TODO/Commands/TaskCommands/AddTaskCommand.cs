@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TODO.Contracts;
 using TODO.Engine;
+using TODO.Utils.GlobalConstants;
 
 namespace TODO.Commands
 {
@@ -22,7 +23,7 @@ namespace TODO.Commands
             ITask task = this.factory.CreateTask(title, priorityStr, description);
             EngineMaikaTI.loggedUser.AddTask(task);
 
-            return $"Added tast {title} successfully !";
+            return Messages.TaskCreated(title);
         }
 
         public override void TakeInput()

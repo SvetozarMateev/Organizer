@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TODO.Contracts;
 using TODO.Engine;
+using TODO.Utils.GlobalConstants;
 
 namespace TODO.Commands
 {
@@ -24,7 +25,7 @@ namespace TODO.Commands
             
             EngineMaikaTI.currentLongTermTask.AddSubTask(currSubtask);
 
-            return $"Sub task {title} added to {EngineMaikaTI.currentLongTermTask.Title}";
+            return Messages.SubTaskCreated(title);
         }
 
         public override void TakeInput()

@@ -21,7 +21,6 @@ namespace TODO.Engine
             {
                 try
                 {
-                    
                     List<string> commands = this.ReadCommands();
 
                     if (commands[0].Equals("exit"))
@@ -108,6 +107,7 @@ namespace TODO.Engine
                 .ToList();
 
             bool isUserCreatable = loggedUser == null && commands[0] != "login" && commands[0] != "register";
+
 
             if (isUserCreatable)
             {

@@ -33,6 +33,7 @@ namespace TODO.Engine
         public abstract string Execute();
 
         public abstract void TakeInput();
+
         protected virtual string ReadOneLine(string instruction)
         {
             Console.Write(instruction);

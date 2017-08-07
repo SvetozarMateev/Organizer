@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TODO.Engine;
+using TODO.Utils.GlobalConstants;
 
 namespace TODO.Commands
 {
@@ -17,10 +18,10 @@ namespace TODO.Commands
 
             if (!SearchForNotebook(newNotebookName))
             {
-                return $"You don't have a notebook with this name";
+                return Messages.WrongNotebookName();
             }
 
-            return $"Successfully switched to {newNotebookName} notebook";
+            return Messages.NotebookSwitched(newNotebookName);
         }
 
         public override void TakeInput()

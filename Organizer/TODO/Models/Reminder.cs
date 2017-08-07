@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using TODO.Contracts;
 
 namespace TODO.Models
@@ -27,7 +28,7 @@ namespace TODO.Models
 
         public void Remind()
         {
-            throw new NotImplementedException();
+            Timer timer = new Timer();
         }
 
         public string FormatUserInfoForDB()

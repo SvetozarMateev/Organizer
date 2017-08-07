@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TODO.Contracts;
 using TODO.Engine;
+using TODO.Utils.GlobalConstants;
 
 namespace TODO.Commands
 {
@@ -23,7 +24,7 @@ namespace TODO.Commands
             EngineMaikaTI.currentLongTermTask = longTermTask;
             EngineMaikaTI.loggedUser.AddLongTermTask(longTermTask);
 
-            return $"Long term task {title} has been added";
+            return Messages.LongTermTaskCreated(title);
         }
 
         public override void TakeInput()

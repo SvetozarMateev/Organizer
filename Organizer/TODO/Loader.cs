@@ -86,6 +86,7 @@ namespace TODO
 
             return new Note(title, content, refinednoteParam, dt);
         }
+
         private static ISubTask LoadSubTask(string subTaskParametersString)
         {
 
@@ -104,6 +105,7 @@ namespace TODO
 
             return new SubTask(title, priority, description, dtDueDate, importancePercent, dtStart);
         }
+
         private static ITask LoadTask(string taskParameteresString)
         {
             string[] taskParameters = taskParameteresString.Split(new string[] { ":::"}, StringSplitOptions.RemoveEmptyEntries).ToArray();
@@ -115,6 +117,7 @@ namespace TODO
             string description = taskParameters[4];
             return new Task(title, priority, description);
         }
+
         private static ILongTermTask LoadLongTermTask(string longTermTaskParametersString)
         {
             string[] longTermTaskParameters = longTermTaskParametersString.Split(new string[] { ":::" }, StringSplitOptions.RemoveEmptyEntries).ToArray();
