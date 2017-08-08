@@ -11,6 +11,10 @@ namespace TODO.Contracts
         IReminder Reminder { get; set; }
         Priority Priority { get; }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> local-branch
         //void Sort();
     }
 }

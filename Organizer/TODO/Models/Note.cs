@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TODO.Contracts;
 using TODO.Utils.Validator;
 

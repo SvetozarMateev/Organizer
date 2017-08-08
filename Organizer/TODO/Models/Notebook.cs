@@ -10,6 +10,7 @@ namespace TODO.Models
     {
         private string name;
         private IUser user;
+<<<<<<< HEAD
         private ICollection<INote> notes;
         private bool isFavourite;
 
@@ -19,6 +20,17 @@ namespace TODO.Models
             this.Notes = notes;
             this.IsFavourite = isFavourite;
            // this.User = EngineMaikaTI.loggedUser;
+=======
+        private ICollection<Note> notes;
+        private bool isFavourite;
+
+        public Notebook(string name, IUser user, ICollection<Note> notes, bool isFavourite = false)
+        {
+            this.Name = name;
+            this.User = user;
+            this.Notes = notes;
+            this.IsFavourite = isFavourite;
+>>>>>>> local-branch
         }
 
         public bool IsFavourite
@@ -29,7 +41,11 @@ namespace TODO.Models
             }
             set
             {
+<<<<<<< HEAD
                 this.isFavourite = value;
+=======
+                this.IsFavourite = value;
+>>>>>>> local-branch
             }
         }
 
@@ -38,12 +54,27 @@ namespace TODO.Models
             get
             {
                 return this.name;
+<<<<<<< HEAD
+=======
             }
             set
             {
+                this.name = value;
+>>>>>>> local-branch
+            }
+            set
+            {
+<<<<<<< HEAD
                 Validator.CannotBeNullOrEmpty(value);
 
                 this.name = value;
+=======
+                return this.notes;
+            }
+            set
+            {
+                this.notes = value;
+>>>>>>> local-branch
             }
         }
 
@@ -51,6 +82,7 @@ namespace TODO.Models
         {
             get
             {
+<<<<<<< HEAD
                 return this.notes;
             }
             set
@@ -79,6 +111,18 @@ namespace TODO.Models
        // } 
 
         public void AddNote(INote note)
+=======
+                return this.user;
+            }
+            set
+            {
+                this.user = value;
+            }
+        }
+
+
+        public void AddNote(Note note)
+>>>>>>> local-branch
         {
             this.Notes.Add(note);
         }
