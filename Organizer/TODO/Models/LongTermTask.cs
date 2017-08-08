@@ -18,6 +18,7 @@ namespace TODO.Models
             this.AllTasks = allTasks;
         }
 
+<<<<<<< HEAD
         public ICollection<ISubTask> AllTasks
         {
             get
@@ -36,6 +37,8 @@ namespace TODO.Models
                 }
             }
         }
+=======
+>>>>>>> local-branch
 
         public DateTime End
         {
@@ -43,6 +46,7 @@ namespace TODO.Models
             {
                 return this.end;
             }
+<<<<<<< HEAD
             private set
             {
                 Validator.CheckIfDateTimeIsNotNull(value);
@@ -71,6 +75,16 @@ namespace TODO.Models
         }
 
         public override string AdditionalInformation()
+=======
+        }
+
+        public void AddSubTask(SubTask subTask)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CalculateDefaultPriorityOfAll()
+>>>>>>> local-branch
         {
             return $"{ (this.AllTasks.Count==0?"None":string.Join(",", this.AllTasks))}:::{this.End.ToString("dd/MM/yyyy/HH/mm")}";
         }

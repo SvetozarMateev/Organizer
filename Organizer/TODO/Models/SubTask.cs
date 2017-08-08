@@ -5,6 +5,7 @@ namespace TODO.Models
 {
     public class SubTask : Task, ITask, ISubTask,ISaveable
     {
+<<<<<<< HEAD
         private DateTime dueDate;
         private double importancePercent;
 
@@ -16,12 +17,23 @@ namespace TODO.Models
             this.ImportancePercent = importancePercent;
         }
         
+=======
+        public string Content
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+>>>>>>> local-branch
         public DateTime DueDate
         {
             get
             {
                 return this.dueDate;
             }
+<<<<<<< HEAD
 
             private set
             {
@@ -46,5 +58,8 @@ namespace TODO.Models
         {
             return $"{this.DueDate}:::{this.ImportancePercent}";
         }    
+=======
+        }
+>>>>>>> local-branch
     }
 }

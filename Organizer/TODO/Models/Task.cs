@@ -22,7 +22,12 @@ namespace TODO
             this.Reminder = reminder;
         }
 
+<<<<<<< HEAD
         public string Title
+=======
+
+        public IUser Author
+>>>>>>> local-branch
         {
             get
             {
@@ -61,7 +66,7 @@ namespace TODO
                 this.priority = value;
             }
         }
-
+        
         public IReminder Reminder
         {
             get

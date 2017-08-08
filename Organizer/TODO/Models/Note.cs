@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 ﻿using System;
+=======
+﻿
+
+using System;
+using System.Runtime.CompilerServices;
+>>>>>>> local-branch
 using TODO.Contracts;
 using TODO.Utils.Validator;
 
@@ -11,7 +18,11 @@ namespace TODO.Models
         private DateTime dateOfCreation;
         private bool isFavourite;
 
+<<<<<<< HEAD
         public Note(string title, string content, bool isFavourite = false, DateTime dateOfCreation = default(DateTime))
+=======
+        public Note(string title, string content, DateTime dateOfCreation, bool isFavourite = false)
+>>>>>>> local-branch
         {
             this.Title = title;
             this.Content = content;
@@ -19,6 +30,10 @@ namespace TODO.Models
             this.IsFavourite = isFavourite;
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> local-branch
         public string Title
         {
             get
@@ -27,8 +42,11 @@ namespace TODO.Models
             }
             private set
             {
+<<<<<<< HEAD
                 Validator.CannotBeNullOrEmpty(value);
 
+=======
+>>>>>>> local-branch
                 this.title = value;
             }
         }
@@ -41,8 +59,11 @@ namespace TODO.Models
             }
             set
             {
+<<<<<<< HEAD
                 Validator.CannotBeNullOrEmpty(value);
 
+=======
+>>>>>>> local-branch
                 this.content = value;
             }
         }
@@ -55,6 +76,7 @@ namespace TODO.Models
             }
             private set
             {
+<<<<<<< HEAD
                 if (value == default(DateTime))
                 {
                     this.dateOfCreation = DateTime.Now;
@@ -63,6 +85,9 @@ namespace TODO.Models
                 {
                     this.dateOfCreation = value;
                 }
+=======
+                this.dateOfCreation = value;
+>>>>>>> local-branch
             }
         }
 
@@ -78,9 +103,13 @@ namespace TODO.Models
             }
         }
 
+<<<<<<< HEAD
         public string FormatUserInfoForDB()
         {
             return $"{this.Title}***{this.IsFavourite}***{this.DateOfCreation.ToString("dd/MM/yyyy")}***{this.Content}";
         }
+=======
+       
+>>>>>>> local-branch
     }
 }
