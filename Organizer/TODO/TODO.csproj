@@ -55,11 +55,13 @@
     <Compile Include="Commands\UserCommands\LogOutCommand.cs" />
     <Compile Include="Commands\UserCommands\RegisterCommand.cs" />
     <Compile Include="Commands\NotebookCommands\SwitchNotebookCommand.cs" />
+    <Compile Include="Contracts\ICredentials.cs" />
     <Compile Include="Contracts\ILongTermTask.cs" />
     <Compile Include="Contracts\INote.cs" />
     <Compile Include="Contracts\INotebook.cs" />
     <Compile Include="Contracts\IReminder.cs" />
     <Compile Include="Contracts\ISaveable.cs" />
+    <Compile Include="Contracts\ISortable.cs" />
     <Compile Include="Contracts\ISubTask.cs" />
     <Compile Include="Contracts\ITask.cs" />
     <Compile Include="Contracts\IUser.cs" />

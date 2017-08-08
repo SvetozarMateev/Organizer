@@ -3,10 +3,8 @@ using TODO.Models;
 
 namespace TODO.Contracts
 {
-    public interface IUser
+    public interface IUser : ICredentials, ISaveable, ISortable
     {
-        string Username { get; }
-        string Password { get; }
         ICollection<INotebook> Notebooks { get; }
         ICollection<ITask> Tasks { get; }
         ICollection<ILongTermTask> LongTermTasks { get; }
@@ -15,7 +13,5 @@ namespace TODO.Contracts
         void AddLongTermTask(ILongTermTask longTermTask);
         void DeleteNotebook();
         void AddTask(ITask task);
-        void Sort();
-        string FormatUserInfoForDB();
     }
 }
