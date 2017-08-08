@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using TODO.Engine;
 using TODO.Utils.GlobalConstants;
 
@@ -14,14 +14,14 @@ namespace TODO.Commands
 
         public override string Execute()
         {
-            string newNotebookName = base.Parameters[0];
+            string notebookName = base.Parameters[0];
 
-            if (!SearchForNotebook(newNotebookName))
+            if (EngineMaikaTI.loggedUser.Notebooks.Any(x=>x.Name==notebookName))
             {
-                return Messages.WrongNotebookName();
+                EngineMaikaTI.currentNotebook = EngineMaikaTI.loggedUser.Notebooks.First(x => x.Name == notebookName);
+                return Messages.NotebookSwitched(notebookName);
             }
-
-            return Messages.NotebookSwitched(newNotebookName);
+            return Messages.WrongNotebookName();
         }
 
         public override void TakeInput()
@@ -29,20 +29,6 @@ namespace TODO.Commands
             List<string> inputParameters = new List<string>();
             inputParameters.Add(this.ReadOneLine("Notebook name: "));
             this.Parameters = inputParameters;
-        }
-
-        private bool SearchForNotebook(string newNotebookName)
-        {
-            foreach (var nb in EngineMaikaTI.loggedUser.Notebooks) // searches if the user has a notebook with the given name.
-            {
-                if (nb.Name == newNotebookName)
-                {
-                    EngineMaikaTI.currentNotebook = nb;
-                    return true;
-                }
-            }
-
-            return false;
         }
     }
 }

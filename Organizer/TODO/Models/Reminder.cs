@@ -34,5 +34,9 @@ namespace TODO.Models
         {
             throw new NotImplementedException();
         }
+        public override string ToString()
+        {
+            return $"{this.MomentToRemind}";
+        }
     }
 }

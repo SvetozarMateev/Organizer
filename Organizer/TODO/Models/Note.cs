@@ -82,5 +82,10 @@ namespace TODO.Models
         {
             return $"{this.Title}***{this.IsFavourite}***{this.DateOfCreation.ToString("dd/MM/yyyy")}***{this.Content}";
         }
+        public override string ToString()
+        {
+            return $"###{this.Title}### created: {this.DateOfCreation}" + Environment.NewLine +
+                   $"      {this.Content}.";
+        }
     }
 }

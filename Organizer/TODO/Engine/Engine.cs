@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TODO.Commands;
+using TODO.Commands.TaskCommands;
 using TODO.Contracts;
 using TODO.Factories;
 
@@ -95,6 +96,18 @@ namespace TODO.Engine
                     break;
                 case "addnotebooktofavourites":
                     command = new AddNotebookToFavouritesCommand();
+                    break;
+                case "list":
+                    command = new ListCommand();
+                    break;
+                case "switchlongtertask":
+                    command = new SwitchLongTermTaskCommand();
+                    break;
+                case "deletetask":
+                    command = new DeleteTaskCommand();
+                    break;
+                case "deletesubtask":
+                    command = new DeleteSubTaskCommand();
                     break;
                 default:
                     break;

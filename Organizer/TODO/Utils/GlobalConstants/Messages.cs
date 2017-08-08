@@ -29,6 +29,16 @@ namespace TODO.Utils.GlobalConstants
             return $"Sub task {title} added to {EngineMaikaTI.currentLongTermTask.Title}";
         }
 
+        internal static string InvalidTaskName()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static string TaskRemoved(string taskName)
+        {
+            throw new NotImplementedException();
+        }
+
         public static string TaskCreated(string title)
         {
             return $"Added tast {title} successfully !";

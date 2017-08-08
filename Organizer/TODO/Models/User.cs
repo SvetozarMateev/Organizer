@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TODO.Contracts;
+using TODO.Engine;
 using TODO.Utils.GlobalConstants;
 using TODO.Utils.Validator;
 
@@ -149,6 +150,14 @@ namespace TODO.Models
         public void AddLongTermTask(ILongTermTask longTermTask)
         {
             this.LongTermTasks.Add(longTermTask);
+        }
+        public override string ToString()
+        {
+            return $"__________{this.Username}__________" + Environment.NewLine +
+                    $"Your Notebooks:" + Environment.NewLine +
+                    $"  {String.Join("\n", EngineMaikaTI.loggedUser.Notebooks)}" + Environment.NewLine +
+                    $"Your Taks:" + Environment.NewLine +
+                    $"  {String.Join("\n", EngineMaikaTI.loggedUser.Tasks)}";
         }
     }
 }

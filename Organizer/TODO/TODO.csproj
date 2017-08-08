@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\ListCommand.cs" />
     <Compile Include="Commands\NotebookCommands\AddNotebookToFavouritesCommand.cs" />
     <Compile Include="Commands\NotebookCommands\AddNoteToFavouritesCommand.cs" />
     <Compile Include="Commands\AddReminderToTaskCommand.cs" />
@@ -51,6 +52,8 @@
     <Compile Include="Commands\TaskCommands\AddTaskCommand.cs" />
     <Compile Include="Commands\NotebookCommands\AddNotebookCommand.cs" />
     <Compile Include="Commands\NotebookCommands\AddNoteCommand.cs" />
+    <Compile Include="Commands\TaskCommands\DeleteSubTaskCommand.cs" />
+    <Compile Include="Commands\TaskCommands\DeleteTaskCommand.cs" />
     <Compile Include="Commands\UserCommands\LoginCommand.cs" />
     <Compile Include="Commands\UserCommands\LogOutCommand.cs" />
     <Compile Include="Commands\UserCommands\RegisterCommand.cs" />
@@ -91,6 +94,7 @@
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Task.cs" />
+    <Compile Include="SwitchLongTermTaskCommand.cs" />
     <Compile Include="Utils\GlobalConstants\Constants.cs" />
     <Compile Include="Utils\GlobalConstants\Messages.cs" />
     <Compile Include="Utils\Validator\Validator.cs" />
@@ -98,10 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="views\Register.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="views\HTMLPage1.html" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -102,5 +102,9 @@ namespace TODO.Models
         {
             return $"{this.Name}:::{this.IsFavourite}:::{(this.Notes.Count==0?"None":string.Join(",,,", this.Notes.Select(x=>x.FormatUserInfoForDB())))}";
         }
+        public override string ToString()
+        {
+            return $"{this.Name}: {String.Join("\n  ", this.Notes)}";
+        }
     }
 }
