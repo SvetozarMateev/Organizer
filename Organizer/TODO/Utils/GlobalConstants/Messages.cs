@@ -43,5 +43,13 @@ namespace TODO.Utils.GlobalConstants
         {
             return $"You don't have a notebook with this name";
         }
+        public static string NotebookAddedToFavourites()
+        {
+            return "Notebook successfully added to Favourites";
+        }
+        public static string WrongNoteTitle()
+        {
+            return "Wrong Note Title!";
+        }
     }
 }
